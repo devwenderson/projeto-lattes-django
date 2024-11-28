@@ -1,3 +1,10 @@
 from django.db import models
 
-# Create your models here.
+"""
+fazer um model pra cada? 
+
+
+* fazer instituicao um model só e salvar dados em cookies ate chegar no form de missao
+
+
+"""
