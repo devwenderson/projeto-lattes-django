@@ -1,0 +1,240 @@
+:root {
+    --clr-grey: #B7B6B6;
+    --clr-blue-100: #0063A9;
+    --clr-blue-500: #252390;
+    --clr-green: #9EF197;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+.navbar{
+    background-color: #538CC6;
+    position: sticky;
+    top: 0;
+    z-index: 1030; /* Garante que ela ficará acima de outros conteúdos */
+}
+
+.nav-link{
+    color: white;
+}
+
+.nav-link:hover{
+    text-decoration: none;
+    color: #252390;
+}
+
+
+h3 {
+    color: var(--clr-blue-100);
+}
+
+.h2 {
+    text-align: center;
+    margin-top: 3em;
+    color: var(--clr-blue-100);
+}
+
+h5 {
+    color: var(--clr-blue-100);
+}
+
+h6 {
+    color: var(--clr-blue-500);
+}
+
+footer{
+    margin-top: 4em;
+    padding-top: 2em;
+    padding-bottom: 1em;
+    background-color: #538CC6;
+}
+
+.conteudo-footer, .p{
+    text-align: center;
+    color: white;
+}
+
+.icons-container {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    padding: 0 20px;
+    align-items: center;
+    margin: 50px 0 30px 0;
+}
+
+.icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon > .icon-container {
+    background-color: var(--clr-grey);
+    padding: 15px;
+    border-radius: 50%;
+}
+
+.icon > .icon-container.active {
+    background-color: var(--clr-green);
+}
+
+.icon > .icon-container:hover {
+    scale: 1.1;
+    cursor: pointer;
+    transition: .1s;
+}
+
+@media screen and (max-width: 767px) {
+    .icons-container {
+      flex-wrap: wrap;
+    }
+
+    .icon {
+      flex-basis: 200px;
+    }
+
+    .buttons-container {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .icons-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: baseline;
+    }
+
+    .icon {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .buttons-container {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+        gap: 10px;
+    }
+}
+
+.form-container {
+    border: .5px solid var(--clr-grey);
+    padding: 3em 4em;
+    margin-bottom: 100px;
+    border-radius: 20px;
+}
+
+.form-container h1 {
+    color: var(--clr-blue-100);
+};
+
+.form-container p {
+    width: 100px;
+}
+.accordion, .menu{
+    margin-top: 2em;
+}
+
+.menu{
+    /* padding-left: 11em; */
+    text-align: center;
+}
+
+
+.accordion-body{
+    text-align: justify;
+}
+
+a:hover{
+    color: #252390;
+    text-decoration:underline;
+}
+
+a{
+    text-decoration: none;
+}
+
+.form-select {
+    cursor: pointer;
+}
+
+.image-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: min-content;
+}
+
+.image-input .btn {
+    width: 100%;
+}
+
+.user-image {
+    height: 275px;
+    width: 200px;
+    background-color: var(--clr-grey);
+    border-radius: 8px;
+}
+
+/* Tela dos resultados de curriculos */
+
+.curriculo {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.curriculo .curriculo-perfil .perfil {
+    background: var(--clr-grey);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.curriculo .curriculo-informacoes {
+    display: flex;
+    flex-direction: column;
+}
+
+.curriculo .curriculo-informacoes .curriculo-titulo {
+    font-weight: 700;
+}
+.curriculo .curriculo-informacoes .curriculo-dados {
+    box-sizing: border-box;
+    font-size: 14px;
+    width: 90%;
+}
+
+/* Buscar currículo */
+.buscar-curriculo{
+    margin-top: 8em;
+}
+
+.title-1 {
+    font-weight: 700;
+}
+
+.input-information {
+    font-size: 12px;
+}
+
+h6 {
+    color: #000;
+}
+
+
+

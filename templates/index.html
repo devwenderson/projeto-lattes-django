@@ -1,7 +1,179 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}Pagina Inicial{% endblock %}
-
-
 {% block content %}
-	
+<section>
+    <div id="carouselExampleRide" class="carousel slide carousel-dark" data-bs-ride="true">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{% static 'img/slide-um.jfif' %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'img/slide-dois.jfif' %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'img/slide-tres.jfif' %}" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleRide"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" id="services">
+                <h1 class="h2">Outros serviços</h1>
+            </div>
+
+            <div class="col-md-6 menu">
+                <h5>Diretório de instituições</h5>
+                <p><a href="cadi/home-cadi.html">Criar instituição</a></p>
+                <p><a href="cadi/home-cadi.html">Buscar instituição</a></p>
+            </div>
+            <div class="col-md-6 menu">
+                <h5>Currílo lattes</h5>
+                <p><a href="cadastro-1-curriculo.html">Criar currículo</a></p>
+                <p><a href="busca-curriculo.html">Buscar currículo</a></p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12" id="plataform">
+                <h1 class="h2">Sobre a plataforma</h1>
+            </div>
+
+            <div class="col-md-6">
+                <div class="accordion accordion-flush" id="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                aria-controls="flush-collapseOne">
+                                <h5>Para quem é destinada?</h5>
+                            </button>
+                        </div>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <p>A Plataforma Lattes representa a experiência do CNPq na integração de bases de
+                                    dados de Currículos, de Grupos de pesquisa e de Instituições em um único Sistema
+                                    de Informações. Sua dimensão atual se estende não só às ações de planejamento,
+                                    gestão e operacionalização do fomento do CNPq, mas também de outras agências de
+                                    fomento federais e estaduais, das fundações estaduais de apoio à ciência e
+                                    tecnologia, das instituições de ensino superior e dos institutos de pesquisa.
+                                    Além disso, se tornou estratégica não só para as atividades de planejamento e
+                                    gestão, mas também para a formulação das políticas do Ministério de Ciência e
+                                    Tecnologia e de outros órgãos governamentais da área de ciência, tecnologia e
+                                    inovação.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="accordion accordion-flush" id="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                aria-controls="flush-collapseTwo">
+                                <h5>Qual sua influência no Brasil ou no mundo?</h5>
+                            </button>
+                        </div>
+                        <div id="flush-collapseTwo" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                <p>O Currículo Lattes se tornou um padrão nacional no registro da vida pregressa e
+                                    atual dos estudantes e pesquisadores do país, e é hoje adotado pela maioria das
+                                    instituições de fomento, universidades e institutos de pesquisa do País. Por sua
+                                    riqueza de informações e sua crescente confiabilidade e abrangência, se tornou
+                                    elemento indispensável e compulsório à análise de mérito e competência dos
+                                    pleitos de financiamentos na área de ciência e tecnologia.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="accordion accordion-flush" id="accordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseThree" aria-expanded="false"
+                                aria-controls="flush-collapseThree">
+                                <h5>Do que se trata o Diretório dos Grupos de Pesquisa no Brasil e o Diretorio de
+                                    Instituições?</h5>
+                            </button>
+                        </h2>
+                        <div id="flush-collapseThree" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                <p>O Diretório dos Grupos de Pesquisa no Brasil é um inventário dos grupos em
+                                    atividade no país. Os recursos humanos constituintes dos grupos, as linhas de
+                                    pesquisa e os setores de atividade envolvidos, as especialidades do
+                                    conhecimento, a produção científica, tecnológica e artística e os padrões de
+                                    interação com o setor produtivo são algumas das informações contidas no
+                                    Diretório. Os grupos estão localizados em instituições de ensino superior,
+                                    institutos de pesquisa, etc. As informações individuais dos participantes dos
+                                    grupos são extraídas dos seus Currículos Lattes.
+                                    O Diretório de Instituições foi concebido para promover as organizações do
+                                    Sistema Nacional de CT&I à condição de usuárias da Plataforma Lattes. Ele
+                                    registra todas e quaisquer organizações ou entidades que estabelecem algum tipo
+                                    de relacionamento com o CNPq (instituições nas quais os estudantes e
+                                    pesquisadores apoiados pelo CNPq desenvolvem suas atividades; instituições onde
+                                    os grupos de pesquisa estão abrigados, usuárias de serviços prestados pela
+                                    Agência, como o credenciamento para importação pela Lei 8.010/90; instituições
+                                    que pleiteiam participar desses programas e serviços, etc). A disponibilização
+                                    pública dos dados da Plataforma na internet dão maior transparência e mais
+                                    confiabilidade às atividades de fomento do CNPq e das agências que a utilizam,
+                                    fortalecem o intercâmbio entre pesquisadores e instituições e é fonte
+                                    inesgotável de informações para estudos e pesquisas. Na medida em que suas
+                                    informações são recorrentes e cumulativas, têm também o importante papel de
+                                    preservar a memória da atividade de pesquisa no país.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="accordion accordion-flush" id="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseFour" aria-expanded="false"
+                                aria-controls="flush-collapseFour">
+                                <h5>O que é o Repositório de Dados de Pesquisa ou LattesData?</h5>
+                            </button>
+                        </div>
+                        <div id="flush-collapseFour" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                <p>O Repositório de Dados de Pesquisa LattesData é um repositório de acesso aberto e
+                                    contém dados coletados, gerados e utilizados nas pesquisas apoiadas pelo CNPq,
+                                    tendo por objetivo o incentivo à prática da Ciência Aberta no Brasil, a
+                                    diminuição dos custos de pesquisa, a maior reprodutibilidade de resultados
+                                    publicados, o reuso de dados utilizados em pesquisas anteriores, aumentando a
+                                    confiabilidade e verificabilidade dos resultados de pesquisa, bem como a
+                                    diminuição de custos no levantamento e geração de dados, o que, por sua vez,
+                                    diminui os custos de pesquisa.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock content %}
