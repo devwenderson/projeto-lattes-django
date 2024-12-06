@@ -1,0 +1,145 @@
+{% extends 'instituicao/cadi-base.html' %}
+{% load static %}
+
+{% block content %}
+    <section class="form-container container">
+        <form action="instituicao-encontrada.html" class="form-busca">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>CADASTRO DE INFORMAÇÕES INSTITUCIONAIS</h1>
+                </div>
+                <div class="col-md-12">
+                    <p class="check-title">Buscar pelo:</p>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                            value="option1" checked>
+                        <label class="form-check-label" for="inlineRadio1"> Nome e/ou sigla</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                            value="option2">
+                        <label class="form-check-label" for="inlineRadio2"> CNPJ</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-8">
+                    <input class="form-control me-2 " type="search" placeholder="Digite sua busca" aria-label="Buscar" required>
+                    <p class="text-muted">É necessario verificar se a sua instituição já está cadastrada.</p>
+                </div>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-success" href="#" type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            style="fill: rgba(0, 0, 0, 1);">
+                            <path
+                                d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z">
+                            </path>
+                        </svg>
+                        Buscar
+                    </button>
+                </div>
+            </div>
+        </form>
+        <hr>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                aria-controls="flush-collapseOne">
+                                <h5>Dicas de busca:</h5>
+                            </button>
+                        </h2>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li>
+                                        Não utilize termos como “universidade”, “escola”, “departamento de
+                                        administração”, “instituto de física” (esse tipo de busca pode demorar e o
+                                        retorno, quase sempre, traz um grande número de repostas);
+
+                                    </li>
+                                    <li>
+                                        Para buscar subunidades de uma instituição, digite o nome ou parte do nome da
+                                        subunidade e a sigla da instituição à qual a subunidade se vincula. Ex:
+                                        “departamento química usp”, instituto física ufrj;
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                aria-controls="flush-collapseTwo">
+                                <h5>Perguntas frequentes:</h5>
+                            </button>
+                        </h2>
+                        <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li>(clique aqui para saber como incluir subunidades, como cadastrar Titular, etc)
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseThree" aria-expanded="false"
+                                aria-controls="flush-collapseThree">
+                                <h5>Importante:</h5>
+                            </button>
+                        </h2>
+                        <div id="flush-collapseThree" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li>A busca no DI permite recuperar informações sobre as instituições cadastradas no
+                                        CNPq e suas subunidades. A pesquisa pode ser feita pelo “Nome e/ou sigla”
+                                        (Fantasia ou Razão Social) ou pelo CNPJ;
+                                    </li>
+                                    <li>A lista de resultados contém ícones de Visualizar, de Hierarquia
+                                        institucional (visíveis c/o cursor posicionado sobre o nome da instituição) e
+                                        de Cadastrar uma nova instituição(localizado no final da lista);
+                                    </li>
+                                    <li>A inclusão de uma nova instituição (apenas nível macro) é feita pelo
+                                        link Cadastrar uma nova instituição;
+                                    </li>
+                                    <li>Não cadastre uma subunidade institucional (ex: Instituto de Física da
+                                        Universidade São Paulo) pelo link  Cadastrar uma nova instituição. A inclusão de
+                                        subunidades é feita pelo link Hierarquia institucional da instituição macro
+                                        correspondente;
+                                    </li>
+                                    <li>A inclusão de subunidades de uma instituição e a edição de dados cadastrais só
+                                        podem ser feitas por um Titular ou Representante cadastrado, mediante CPF e
+                                        senha;
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <a href="instituicao-nao-encontrada.html" class="btn btn-sm btn-primary ">
+            Para resultados não encontrados..
+            </a>
+        </div>
+    </section>
+{% endblock content %}
