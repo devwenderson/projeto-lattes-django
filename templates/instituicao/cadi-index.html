@@ -12,20 +12,20 @@
                 <div class="col-md-12">
                     <p class="check-title">Buscar pelo:</p>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipoBusca" id="tipoBusca1"
+                        <input class="form-check-input" type="radio" name="tipoBusca" id="tipoBuscaNome"
                             value="nome" checked>
-                        <label class="form-check-label" for="tipoBusca1"> Nome e/ou sigla</label>
+                        <label class="form-check-label" for="tipoBuscaNome"> Nome e/ou sigla</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipoBusca" id="tipoBusca2"
+                        <input class="form-check-input" type="radio" name="tipoBusca" id="tipoBuscaCnpj"
                             value="cnpj">
-                        <label class="form-check-label" for="tipoBusca2"> CNPJ</label>
+                        <label class="form-check-label" for="tipoBuscaCnpj"> CNPJ</label>
                     </div>
                 </div>
             </div>
             <div class="row mt-4">
                 <div class="col-md-8">
-                    <input class="form-control me-2 cnpj" name="instituicaoIdentificador" type="search" placeholder="Digite sua busca" aria-label="Buscar" required>
+                    <input class="form-control me-2" name="instituicaoIdentificador" id="instituicaoIdentificador" type="search" placeholder="Digite sua busca" aria-label="Buscar" required>
                     <p class="text-muted">É necessario verificar se a sua instituição já está cadastrada.</p>
                 </div>
                 <div class="col-md-4">
@@ -136,11 +136,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div>
-            <a href="instituicao-nao-encontrada.html" class="btn btn-sm btn-primary ">
-            Para resultados não encontrados..
-            </a>
         </div>
     </section>
 {% endblock content %}
