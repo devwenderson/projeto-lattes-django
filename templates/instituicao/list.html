@@ -1,2 +1,27 @@
 {% extends 'instituicao/cadi-base.html' %}
 {% load static %}
+
+{% block content %}
+  <div class="container">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Instituicao</th>
+          <th scope="col">Sigla</th>
+          <th scope="col">CNPJ</th>
+          <th scope="col">Representante</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for inst in instituicoes %}
+          <tr>
+            <td>{{ inst.nome }}</td>
+            <td>{{ inst.sigla }}</td>
+            <td>{{ inst.cnpj }}</td>
+            <td>{{ inst.nome_representante }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

@@ -13,12 +13,14 @@ def buscar_instituicao(request):
         tipo_busca = request.POST['tipoBusca']
         if tipo_busca == 'nome':
             nome = request.POST['instituicaoIdentificador']
-            instituicao = Instituicao.objects.filter(nome__contains=nome)
-            context['instituicao'] = instituicao
+            instituicoes = Instituicao.objects.all().filter(nome__contains=nome)
+            context['instituicoes'] = instituicoes
+            
         elif tipo_busca == 'cnpj':
             cnpj = request.POST['instituicaoIdentificador']
-            instituicao = Instituicao.objects.filter(cnpj__contains=cnpj)
-            context['instituicao'] = instituicao
+            instituicoes = Instituicao.objects.all().filter(cnpj__contains=cnpj)
+            context['instituicoes'] = instituicoes
+
     return render(request,'instituicao/list.html', context)
 
 def cadastro_instituicao(request):
