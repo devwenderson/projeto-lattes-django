@@ -4,7 +4,7 @@ const nextButtons = document.querySelectorAll('.next');
 const prevButtons = document.querySelectorAll('.prev');
 
 // Índice do passo atual
-let currentStep = 0;
+let currentStep = 1;
 
 // Função para mostrar o passo atual
 function showStep(stepIndex) {
@@ -19,20 +19,23 @@ function showStep(stepIndex) {
 
 // Navegar para o próximo passo
 nextButtons.forEach(button => {
-    button.addEventListener('click', () => {
+    button.addEventListener('click', (event) => {
+        event.preventDefault();  
         if (currentStep < steps.length - 1) {
             currentStep++;
             showStep(currentStep);
+            alert(currentStep)
         }
     });
 });
 
 // Navegar para o passo anterior
 prevButtons.forEach(button => {
-    button.addEventListener('click', () => {
+    button.addEventListener('click', (event) => {
+        event.preventDefault();
         if (currentStep > 0) {
             currentStep--;
-            showStep(currentStep);
+            showStep(currentStep);  
         }
     });
 });

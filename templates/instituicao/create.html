@@ -149,7 +149,8 @@
 
   <!-- FORM -->
   <section class="form-container">
-    <form action="#">
+    <form action="#" method="post">
+      {% csrf_token %}
       <!-- PAGE 1 -->
       <div class="form-step form-step-active ">
         <h1>IDENTIFICAÇÃO DA INSTITUIÇÃO</h1>
@@ -198,7 +199,7 @@
           <div class="col-md-6">
             <h5>Nacionalidade:</h5>
           </div>
-          
+
           <div class="col-md-6">
             <div class="mb-3 field">
               <label for="cnpj" class="form-label">Tipo de estabelecimento:</label>
@@ -351,7 +352,504 @@
       </div>
 
       <!-- PAGE 3 -->
-      
+      <div class="form-step">
+        <h1>SÓCIOS E REPRESENTANTES</h1>
+        <hr>
+
+        <!-- Seção Sócios -->
+        <div class="row">
+          <div class="col-md-6">
+            <h5>Sócios:</h5>
+          </div>
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="tipo-socio" class="form-label">Tipo de Sócio:</label>
+              <select class="form-select" id="tipo-socio" name="tipo-socio">
+                <option selected>Selecione</option>
+                <option value="1">Tipo 1</option>
+                <option value="2">Tipo 2</option>
+                <option value="3">Tipo 3</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="cpf-socio" class="form-label">CPF:</label>
+              <input type="text" class="form-control" id="cpf-socio" name="cpf-socio" placeholder="Informe o CPF">
+            </div>
+            <div class="mb-3">
+              <label for="nome-socio" class="form-label">Nome:</label>
+              <input type="text" class="form-control" id="nome-socio" name="nome-socio" placeholder="Informe o nome">
+            </div>
+            <div class="mb-3">
+              <label for="qualificacao-socio" class="form-label">Qualificação:</label>
+              <select class="form-select" id="qualificacao-socio" name="qualificacao-socio">
+                <option selected>Selecione</option>
+                <option value="1">Qualificação 1</option>
+                <option value="2">Qualificação 2</option>
+                <option value="3">Qualificação 3</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="data-inclusao" class="form-label">Data de Inclusão na Sociedade:</label>
+              <input type="date" class="form-control" id="data-inclusao" name="data-inclusao">
+            </div>
+          </div>
+        </div>
+        <hr>
+
+        <!-- Seção Representantes Legais -->
+        <div class="row">
+          <div class="col-md-6">
+            <h5>Representantes Legais:</h5>
+          </div>
+
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="cpf-representante" class="form-label">CPF:</label>
+              <input type="text" class="form-control" id="cpf-representante" name="cpf-representante"
+                placeholder="Informe o CPF">
+            </div>
+            <div class="mb-3">
+              <label for="nome-representante" class="form-label">Nome:</label>
+              <input type="text" class="form-control" id="nome-representante" name="nome-representante"
+                placeholder="Informe o nome">
+            </div>
+
+            <div class="mb-3">
+              <label for="qualificacao-representante" class="form-label">Qualificação:</label>
+              <select class="form-select" id="qualificacao-representante" name="qualificacao-representante">
+                <option selected>Selecione</option>
+                <option value="1">Qualificação 1</option>
+                <option value="2">Qualificação 2</option>
+                <option value="3">Qualificação 3</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="mt-5">
+          <button class="btn btn-primary avance">
+            Avançar
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink">
+              <rect width="30" height="30" fill="url(#pattern0_167_55)" />
+              <defs>
+                <pattern id="pattern0_167_55" patternContentUnits="objectBoundingBox" width="1" height="1">
+                  <use xlink:href="#image0_167_55" transform="scale(0.0111111)" />
+                </pattern>
+                <image id="image0_167_55" width="90" height="90"
+                  xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFLUlEQVR4nO2du2/cRRDHVzKPoCAoeUVyfLNHohQpCFSAjBDPAgHFb+eIjUJISAOSCVFw6OiAVMgS/4QLwkMCQgor+s2cDTKCJBQ0gYbwdLCpMJLtQ/O7I7zs04nb387+7vYjjXSyz+fdr9e7O7Oz8zMmkUgkEolEIpFIJBI9ks2OjDm+y2J+CByftI7fsUjnwfFF6/gXQPpdrHgtX0M6L+8B5DfkZ2oNulM+o9dfN1TYiYUd1jVfBEfvg6NfLXKrP6MVQH7PIk/Vs+ZtZpjZkTWvA+SnAemMdbTev7hb2ho4/thmNDl6YG6bGRb2ZHPXy0gDx5dKFHdTA+SfAPnVWrZ4oxlU9h1ZvLqOdByQLocW+L+C02VwfEzaZAaJOtK9FumCtsCbjPCv6q75gKk6MicC0lsWaUNb1K2taNuMfeSDa00V2YXzO8Hxgr6Q3Kvgn0HWtKZKyL+jn20ahxZ7pdbg+00VqDWaT1rHv+mLxv/LOg4RmpgB5CMl74lbQczROmT0nIkRcPyEOAfqIqFPsXNnYkLmNUBeVRcH/VoRU0F6yMRA7an5ejUXPu7RaMUigarIsveUbZG+GFy2Larus9vOiLoIrUA2o+lWR+zxsWejDZs1x4OKPD4+d5V1dE6/8xxa7AtBA1EShdPvNOtYg44GiycD0pJ6h1HHpO+iQelCW+Rp7c5abbEdHyv9+Mk6+iEOR4KnR7NPbhaT1yEdJnD8XanHYnLGpy2ybdv0v9tWw/zRoN6po4kShaYzEYjcklG8afscPxwscujow1JElmP7WIJGo1sIHVRsR+ulpDJI3oW2wPYvO9GtraGmEcD8Be9CS3JLBAK32h3kVRFTX2w65VflbHbEIi9rC2z/IbakheWPdR8cpU8jy17Tz9q5cPri2ghHNmT5Pm9Cg6PD2qLaWEe244MeheaT2oLaSMUGR695E9o6fldbTBur2I7e9ih0NUKioDBnA/Ln3oQGR9/4GnV1pOO7J87eYhTxKTYgf+2tYd7Coo5eNpEgTo8XoR3/7K1RnWhZ343arTyS/85YY/4mX9NVdELvatCtJhKkLTEKvVRWeFMLcPkr8U0dHhdDizytPbKjXQzT9o7DbO+Sw8JhHJbkgnMgFxzzQ54Ww9agBZXqSM94EzqFSbnLiG7e4U3oFPjnMIF/oXO3Wn2qsJEE/L0vhH8i14q1BbY9Oj7BDmcb/HxZLmtKN8ArQq91S3voi6JKgP5obg10Ao0gpRi0RbZb5HUETwnD5v5ykxyRvtcWGtoxkxMSdhWT14GTHC+VXvtjqJPQ8cof+iVTNnsnT2+X0OAQi7wUJBFdkERs7Q5bPZsyIS8LAfIXEXS6NdCXhYRalt+Trr8Foqjcoj7KOIiBozdD6brFFWVeHIIp49M92ZfXqAldiI0E7Yvp2mJwWbZ8e3Z2zMQAYH5flavO2G6OUSN/0MQEID0eS9DJ+rCikk4zMzEi5XEGotQPSplNOmxipij5U+FpBJBXoyvx0630T0UXyGVZb0yV2LmfRwF5PgLxWj3aonpJnz732TNxe5C0Ic6I+j7Zm7vuIrw14OhczTXvNoPEuFStadDRGEKsnTZMSZvMoLJ38vT2olA30rcKI/hHKdRtJxZuMMPC6IG5bVKKwSJ9VLKjsyYHqXLGN1Sl5zdDzv3kArvcrZanUfQ/cuUz6JTkXZSWElB5stkRyWezGT8Ljl6XbCDJQZZHgRQl4zuPB+mUj78o3yveU7yXDxa5cOnxIIlEIpFIJBKJRCJheuYPiEwcRMVIe48AAAAASUVORK5CYII=" />
+              </defs>
+            </svg>
+          </button>
+          <button class="btn btn-warning avance">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink">
+              <rect x="30" y="30" width="30" height="30" transform="rotate(-180 30 30)" fill="url(#pattern0_167_216)" />
+              <defs>
+                <pattern id="pattern0_167_216" patternContentUnits="objectBoundingBox" width="1" height="1">
+                  <use xlink:href="#image0_167_216" transform="scale(0.0111111)" />
+                </pattern>
+                <image id="image0_167_216" width="90" height="90"
+                  xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFM0lEQVR4nO2dz2tkRRDHG9YfK4oe/Qkq6sWDB2OmalZlRPx5EPUQBX+A66oXhbgua9aT3tQ9rUEP2Vc9WfSWgz8PK+4foEhk1b14US+ucTXJvK5JMIHok5oZlkCSYTD9uvrN9AcKhmQyqf6m06+rXnU9YxKJRCKRSCQSiUQiMRjF3MSevFkfZ4sH2MJRR/ipI/iRCX9mC8uOcF1MXsvX5Hu997wrP5PT+B3yGQP+utFi9XjtOmfxVSb4ggkdWyx2aTlb+NwRTK6ewGvNKFPM4SWOas86glPO4j8exN3WHMEGW/zKWXimmG3sNaPCufcbl8lMcxbOliVuH9H/dBbeWp4Zu8IMK8XM2IWO8DBbWAot8FaDJWfhkPhkhglu1u52Fs7oC7xF8J/aFu8zVUfWRGfxA0f4r76oOy0n4htMF+89dLGpIq1ZuIEJv9EWkgc1gu/yDG82VUL+HT1t04rAlrebtXtNFWCLjzuCvyMQrfg/JsFQuwlPmphhCy+VuSfmUGLLGAheNDHCVH+sFxyoC8WexG5bfMLEhKxrzsKatjjsW2zC9ZxqD5gYcE24paIXvmJAy/MT+25SFVn2nrItikCMomSbV91nSzASgQhFGINpvbA64oiPPVtvrI2gIhdvNi5wFn/QHjyHFtvCmaCJqG4WTn/grCI2HgyWT2bCRe0Bs5YRLooGpQvNBFPqg7XasxoOlX/7yeIf6gMlXJc/+Mrs+FVi8jpkwOQs/l7qbTG5x6ctMosRTG3xzcLDIcXOCZ8uUWg4pS6yxUJm8Xb+5c36g+Eyh3CyFJHltn0sSaOVHYQOKbYknUopZejUXUQgMndn05H+voZZRvIMX/EudKe4RV1g7M0mWBMxtcV2Fj7xKrKUWDFBS1tg3jxIKQ3L8JF+fpe+jBC0vJaf9Wrh1MXlCGd2nsGYN6G5iS9oi8qRzmxnYb8/oS0c1RaUIxXbEb7tUWj8TFtMjlRsR/CxN6GrkhJ1Cmu2IzjtTWgm/NXbrCM8vDIzdrVRxLPYv3hzzGNa9HUTCRL0+Pkvwr+8OdU9yrB7p1aUZ/Jm2hlc6Wu5ik7oVdp3jYkE8SU6ob0tHbQ1vakFZ/hGdEuHz4shE0xpz+xoL4Zpe4eBtncpYCmCBCwpBMdgIfgBT+tZMXRJJYLnvAmd0qS4o9CtJt7uTeiU+McwiX9BzlZrLxMcUcLf+4XwvOMEk9oC84CBT6ibs21be9m70BJkpHID3DybN/qVPewK6RKgPpvtkBfQCNKKQVtk3qGuI3hJWIZPldxjAxe0hXbdDjRHJO0qJq/DFjnC2dJ7f4xyETqf/0PDa6ZsFj687VJJDWoPloe9EF2QQuwRns2TJuhhIcLvR05kG/iwkMAW7krH3wIhhxy1ZxmHs2NG9YiyxfkIRChKNYJvi7lbLzKayIH0bkO/oRW51Tpeu9HEQDuDe6rcdYb7tZHI4H4TE9ysPRpL0ol9NUah+oSJEWmPMxStfgg2pCbcxEyv5U9llxFnYS26Fj/9Wv9U8gJJ0JLrjakSy1S/ni1+rS6eHdjm1Vv67G6fDdMxR5A9346p75O9hes2vlMDHZ8yvNMME0W3a83BGFKs4oNk4cQnM6wsSD5bGnUT/BZ+mYBz0qh78aPa5WZUKGYbe6UVAxN8WWag0/1sOCn3+Eaq9fx2yH0/OcAuZ6s7T6PYtcCwLJ8ldRellQRUnWJuYo/UszmqP+8sviPVQFKD3Hs8yNKmx4Ms9R4PcrrzHnmvhf3ys+nxIIlEIpFIJBKJRCJhBuc/ZX4Qe9zgllAAAAAASUVORK5CYII=" />
+              </defs>
+            </svg>
+            Retornar
+          </button>
+        </div>
+      </div>
+
+      <!-- PAGE 4 -->
+      <div class="form-step">
+        <h1>ENDEREÇO</h1>
+        <hr>
+
+        <!-- Endereço -->
+        <div class="row">
+          <div class="col-md-6">
+            <h5>Endereço</h5>
+          </div>
+
+          <div class="col-md-6">
+            <!-- Campo Endereço -->
+            <div class="mb-3">
+              <label for="endereco" class="form-label">Endereço </label>
+              <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Avenida, Rua etc.">
+            </div>
+
+            <!-- Campo Código Postal -->
+            <div class="mb-3">
+              <label for="codigo-postal" class="form-label">Código Postal</label>
+              <input type="text" class="form-control" id="codigo-postal" name="codigo-postal"
+                placeholder="Insira o CEP">
+            </div>
+
+            <!-- Selecção de Estado/Província -->
+            <div class="mb-3">
+              <label for="estado" class="form-label">Estado/Província</label>
+              <select class="form-select" id="estado" name="estado">
+                <option selected>Selecione</option>
+                <option value="1">São Paulo</option>
+                <option value="2">Rio de Janeiro</option>
+                <option value="3">Minas Gerais</option>
+              </select>
+            </div>
+
+            <!-- Campo Cidade -->
+            <div class="mb-3">
+              <label for="cidade" class="form-label">Cidade</label>
+              <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Insira a Cidade">
+            </div>
+
+            <!-- Campo Caixa Postal -->
+            <div class="mb-3">
+              <label for="caixa-postal" class="form-label">Caixa Postal</label>
+              <input type="number" class="form-control" id="caixa-postal" name="caixa-postal"
+                placeholder="Número da Caixa Postal">
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-5">
+          <button class="btn btn-primary avance">
+            Avançar
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink">
+              <rect width="30" height="30" fill="url(#pattern0_167_55)" />
+              <defs>
+                <pattern id="pattern0_167_55" patternContentUnits="objectBoundingBox" width="1" height="1">
+                  <use xlink:href="#image0_167_55" transform="scale(0.0111111)" />
+                </pattern>
+                <image id="image0_167_55" width="90" height="90"
+                  xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFLUlEQVR4nO2du2/cRRDHVzKPoCAoeUVyfLNHohQpCFSAjBDPAgHFb+eIjUJISAOSCVFw6OiAVMgS/4QLwkMCQgor+s2cDTKCJBQ0gYbwdLCpMJLtQ/O7I7zs04nb387+7vYjjXSyz+fdr9e7O7Oz8zMmkUgkEolEIpFIJBI9ks2OjDm+y2J+CByftI7fsUjnwfFF6/gXQPpdrHgtX0M6L+8B5DfkZ2oNulM+o9dfN1TYiYUd1jVfBEfvg6NfLXKrP6MVQH7PIk/Vs+ZtZpjZkTWvA+SnAemMdbTev7hb2ho4/thmNDl6YG6bGRb2ZHPXy0gDx5dKFHdTA+SfAPnVWrZ4oxlU9h1ZvLqOdByQLocW+L+C02VwfEzaZAaJOtK9FumCtsCbjPCv6q75gKk6MicC0lsWaUNb1K2taNuMfeSDa00V2YXzO8Hxgr6Q3Kvgn0HWtKZKyL+jn20ahxZ7pdbg+00VqDWaT1rHv+mLxv/LOg4RmpgB5CMl74lbQczROmT0nIkRcPyEOAfqIqFPsXNnYkLmNUBeVRcH/VoRU0F6yMRA7an5ejUXPu7RaMUigarIsveUbZG+GFy2Larus9vOiLoIrUA2o+lWR+zxsWejDZs1x4OKPD4+d5V1dE6/8xxa7AtBA1EShdPvNOtYg44GiycD0pJ6h1HHpO+iQelCW+Rp7c5abbEdHyv9+Mk6+iEOR4KnR7NPbhaT1yEdJnD8XanHYnLGpy2ybdv0v9tWw/zRoN6po4kShaYzEYjcklG8afscPxwscujow1JElmP7WIJGo1sIHVRsR+ulpDJI3oW2wPYvO9GtraGmEcD8Be9CS3JLBAK32h3kVRFTX2w65VflbHbEIi9rC2z/IbakheWPdR8cpU8jy17Tz9q5cPri2ghHNmT5Pm9Cg6PD2qLaWEe244MeheaT2oLaSMUGR695E9o6fldbTBur2I7e9ih0NUKioDBnA/Ln3oQGR9/4GnV1pOO7J87eYhTxKTYgf+2tYd7Coo5eNpEgTo8XoR3/7K1RnWhZ343arTyS/85YY/4mX9NVdELvatCtJhKkLTEKvVRWeFMLcPkr8U0dHhdDizytPbKjXQzT9o7DbO+Sw8JhHJbkgnMgFxzzQ54Ww9agBZXqSM94EzqFSbnLiG7e4U3oFPjnMIF/oXO3Wn2qsJEE/L0vhH8i14q1BbY9Oj7BDmcb/HxZLmtKN8ArQq91S3voi6JKgP5obg10Ao0gpRi0RbZb5HUETwnD5v5ykxyRvtcWGtoxkxMSdhWT14GTHC+VXvtjqJPQ8cof+iVTNnsnT2+X0OAQi7wUJBFdkERs7Q5bPZsyIS8LAfIXEXS6NdCXhYRalt+Trr8Foqjcoj7KOIiBozdD6brFFWVeHIIp49M92ZfXqAldiI0E7Yvp2mJwWbZ8e3Z2zMQAYH5flavO2G6OUSN/0MQEID0eS9DJ+rCikk4zMzEi5XEGotQPSplNOmxipij5U+FpBJBXoyvx0630T0UXyGVZb0yV2LmfRwF5PgLxWj3aonpJnz732TNxe5C0Ic6I+j7Zm7vuIrw14OhczTXvNoPEuFStadDRGEKsnTZMSZvMoLJ38vT2olA30rcKI/hHKdRtJxZuMMPC6IG5bVKKwSJ9VLKjsyYHqXLGN1Sl5zdDzv3kArvcrZanUfQ/cuUz6JTkXZSWElB5stkRyWezGT8Ljl6XbCDJQZZHgRQl4zuPB+mUj78o3yveU7yXDxa5cOnxIIlEIpFIJBKJRCJheuYPiEwcRMVIe48AAAAASUVORK5CYII=" />
+              </defs>
+            </svg>
+          </button>
+          <button class="btn btn-warning avance">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink">
+              <rect x="30" y="30" width="30" height="30" transform="rotate(-180 30 30)" fill="url(#pattern0_167_216)" />
+              <defs>
+                <pattern id="pattern0_167_216" patternContentUnits="objectBoundingBox" width="1" height="1">
+                  <use xlink:href="#image0_167_216" transform="scale(0.0111111)" />
+                </pattern>
+                <image id="image0_167_216" width="90" height="90"
+                  xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFM0lEQVR4nO2dz2tkRRDHG9YfK4oe/Qkq6sWDB2OmalZlRPx5EPUQBX+A66oXhbgua9aT3tQ9rUEP2Vc9WfSWgz8PK+4foEhk1b14US+ucTXJvK5JMIHok5oZlkCSYTD9uvrN9AcKhmQyqf6m06+rXnU9YxKJRCKRSCQSiUQiMRjF3MSevFkfZ4sH2MJRR/ipI/iRCX9mC8uOcF1MXsvX5Hu997wrP5PT+B3yGQP+utFi9XjtOmfxVSb4ggkdWyx2aTlb+NwRTK6ewGvNKFPM4SWOas86glPO4j8exN3WHMEGW/zKWXimmG3sNaPCufcbl8lMcxbOliVuH9H/dBbeWp4Zu8IMK8XM2IWO8DBbWAot8FaDJWfhkPhkhglu1u52Fs7oC7xF8J/aFu8zVUfWRGfxA0f4r76oOy0n4htMF+89dLGpIq1ZuIEJv9EWkgc1gu/yDG82VUL+HT1t04rAlrebtXtNFWCLjzuCvyMQrfg/JsFQuwlPmphhCy+VuSfmUGLLGAheNDHCVH+sFxyoC8WexG5bfMLEhKxrzsKatjjsW2zC9ZxqD5gYcE24paIXvmJAy/MT+25SFVn2nrItikCMomSbV91nSzASgQhFGINpvbA64oiPPVtvrI2gIhdvNi5wFn/QHjyHFtvCmaCJqG4WTn/grCI2HgyWT2bCRe0Bs5YRLooGpQvNBFPqg7XasxoOlX/7yeIf6gMlXJc/+Mrs+FVi8jpkwOQs/l7qbTG5x6ctMosRTG3xzcLDIcXOCZ8uUWg4pS6yxUJm8Xb+5c36g+Eyh3CyFJHltn0sSaOVHYQOKbYknUopZejUXUQgMndn05H+voZZRvIMX/EudKe4RV1g7M0mWBMxtcV2Fj7xKrKUWDFBS1tg3jxIKQ3L8JF+fpe+jBC0vJaf9Wrh1MXlCGd2nsGYN6G5iS9oi8qRzmxnYb8/oS0c1RaUIxXbEb7tUWj8TFtMjlRsR/CxN6GrkhJ1Cmu2IzjtTWgm/NXbrCM8vDIzdrVRxLPYv3hzzGNa9HUTCRL0+Pkvwr+8OdU9yrB7p1aUZ/Jm2hlc6Wu5ik7oVdp3jYkE8SU6ob0tHbQ1vakFZ/hGdEuHz4shE0xpz+xoL4Zpe4eBtncpYCmCBCwpBMdgIfgBT+tZMXRJJYLnvAmd0qS4o9CtJt7uTeiU+McwiX9BzlZrLxMcUcLf+4XwvOMEk9oC84CBT6ibs21be9m70BJkpHID3DybN/qVPewK6RKgPpvtkBfQCNKKQVtk3qGuI3hJWIZPldxjAxe0hXbdDjRHJO0qJq/DFjnC2dJ7f4xyETqf/0PDa6ZsFj687VJJDWoPloe9EF2QQuwRns2TJuhhIcLvR05kG/iwkMAW7krH3wIhhxy1ZxmHs2NG9YiyxfkIRChKNYJvi7lbLzKayIH0bkO/oRW51Tpeu9HEQDuDe6rcdYb7tZHI4H4TE9ysPRpL0ol9NUah+oSJEWmPMxStfgg2pCbcxEyv5U9llxFnYS26Fj/9Wv9U8gJJ0JLrjakSy1S/ni1+rS6eHdjm1Vv67G6fDdMxR5A9346p75O9hes2vlMDHZ8yvNMME0W3a83BGFKs4oNk4cQnM6wsSD5bGnUT/BZ+mYBz0qh78aPa5WZUKGYbe6UVAxN8WWag0/1sOCn3+Eaq9fx2yH0/OcAuZ6s7T6PYtcCwLJ8ldRellQRUnWJuYo/UszmqP+8sviPVQFKD3Hs8yNKmx4Ms9R4PcrrzHnmvhf3ys+nxIIlEIpFIJBKJRCJhBuc/ZX4Qe9zgllAAAAAASUVORK5CYII=" />
+              </defs>
+            </svg>
+            Retornar
+          </button>
+        </div>
+      </div>
+
+      <!-- PAGE 5 -->
+      <div class="form-step">
+        <h1>CONTATO</h1>
+        <hr>
+
+        <!-- Seção de Contato -->
+        <div class="row">
+          <div class="col-md-6">
+            <h5>Informações de Contato</h5>
+          </div>
+
+          <div class="col-md-6">
+            <!-- Campo Telefone Principal -->
+            <div class="mb-3">
+              <label for="telefone-principal" class="form-label">Telefone Principal</label>
+              <input type="number" class="form-control" id="telefone-principal" name="telefone-principal"
+                placeholder="Informe o telefone principal">
+            </div>
+
+            <!-- Campo Telefone Secundário -->
+            <div class="mb-3">
+              <label for="telefone-secundario" class="form-label">Telefone Secundário</label>
+              <input type="number" class="form-control" id="telefone-secundario" name="telefone-secundario"
+                placeholder="Informe o telefone secundário">
+            </div>
+
+            <!-- Campo FAX -->
+            <div class="mb-3">
+              <label for="fax" class="form-label">FAX</label>
+              <input type="number" class="form-control" id="fax" name="fax" placeholder="Informe o número do fax">
+            </div>
+
+            <!-- Campo Email Institucional -->
+            <div class="mb-3">
+              <label for="email-institucional" class="form-label">Email Institucional</label>
+              <input type="email" class="form-control" id="email-institucional" name="email-institucional"
+                placeholder="Informe o email institucional">
+            </div>
+
+            <!-- Campo Website -->
+            <div class="mb-3">
+              <label for="website" class="form-label">Website</label>
+              <input type="url" class="form-control" id="website" name="website" placeholder="Informe o site">
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-5">
+          <button class="btn btn-primary avance">
+            Avançar
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink">
+              <rect width="30" height="30" fill="url(#pattern0_167_55)" />
+              <defs>
+                <pattern id="pattern0_167_55" patternContentUnits="objectBoundingBox" width="1" height="1">
+                  <use xlink:href="#image0_167_55" transform="scale(0.0111111)" />
+                </pattern>
+                <image id="image0_167_55" width="90" height="90"
+                  xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFLUlEQVR4nO2du2/cRRDHVzKPoCAoeUVyfLNHohQpCFSAjBDPAgHFb+eIjUJISAOSCVFw6OiAVMgS/4QLwkMCQgor+s2cDTKCJBQ0gYbwdLCpMJLtQ/O7I7zs04nb387+7vYjjXSyz+fdr9e7O7Oz8zMmkUgkEolEIpFIJBI9ks2OjDm+y2J+CByftI7fsUjnwfFF6/gXQPpdrHgtX0M6L+8B5DfkZ2oNulM+o9dfN1TYiYUd1jVfBEfvg6NfLXKrP6MVQH7PIk/Vs+ZtZpjZkTWvA+SnAemMdbTev7hb2ho4/thmNDl6YG6bGRb2ZHPXy0gDx5dKFHdTA+SfAPnVWrZ4oxlU9h1ZvLqOdByQLocW+L+C02VwfEzaZAaJOtK9FumCtsCbjPCv6q75gKk6MicC0lsWaUNb1K2taNuMfeSDa00V2YXzO8Hxgr6Q3Kvgn0HWtKZKyL+jn20ahxZ7pdbg+00VqDWaT1rHv+mLxv/LOg4RmpgB5CMl74lbQczROmT0nIkRcPyEOAfqIqFPsXNnYkLmNUBeVRcH/VoRU0F6yMRA7an5ejUXPu7RaMUigarIsveUbZG+GFy2Larus9vOiLoIrUA2o+lWR+zxsWejDZs1x4OKPD4+d5V1dE6/8xxa7AtBA1EShdPvNOtYg44GiycD0pJ6h1HHpO+iQelCW+Rp7c5abbEdHyv9+Mk6+iEOR4KnR7NPbhaT1yEdJnD8XanHYnLGpy2ybdv0v9tWw/zRoN6po4kShaYzEYjcklG8afscPxwscujow1JElmP7WIJGo1sIHVRsR+ulpDJI3oW2wPYvO9GtraGmEcD8Be9CS3JLBAK32h3kVRFTX2w65VflbHbEIi9rC2z/IbakheWPdR8cpU8jy17Tz9q5cPri2ghHNmT5Pm9Cg6PD2qLaWEe244MeheaT2oLaSMUGR695E9o6fldbTBur2I7e9ih0NUKioDBnA/Ln3oQGR9/4GnV1pOO7J87eYhTxKTYgf+2tYd7Coo5eNpEgTo8XoR3/7K1RnWhZ343arTyS/85YY/4mX9NVdELvatCtJhKkLTEKvVRWeFMLcPkr8U0dHhdDizytPbKjXQzT9o7DbO+Sw8JhHJbkgnMgFxzzQ54Ww9agBZXqSM94EzqFSbnLiG7e4U3oFPjnMIF/oXO3Wn2qsJEE/L0vhH8i14q1BbY9Oj7BDmcb/HxZLmtKN8ArQq91S3voi6JKgP5obg10Ao0gpRi0RbZb5HUETwnD5v5ykxyRvtcWGtoxkxMSdhWT14GTHC+VXvtjqJPQ8cof+iVTNnsnT2+X0OAQi7wUJBFdkERs7Q5bPZsyIS8LAfIXEXS6NdCXhYRalt+Trr8Foqjcoj7KOIiBozdD6brFFWVeHIIp49M92ZfXqAldiI0E7Yvp2mJwWbZ8e3Z2zMQAYH5flavO2G6OUSN/0MQEID0eS9DJ+rCikk4zMzEi5XEGotQPSplNOmxipij5U+FpBJBXoyvx0630T0UXyGVZb0yV2LmfRwF5PgLxWj3aonpJnz732TNxe5C0Ic6I+j7Zm7vuIrw14OhczTXvNoPEuFStadDRGEKsnTZMSZvMoLJ38vT2olA30rcKI/hHKdRtJxZuMMPC6IG5bVKKwSJ9VLKjsyYHqXLGN1Sl5zdDzv3kArvcrZanUfQ/cuUz6JTkXZSWElB5stkRyWezGT8Ljl6XbCDJQZZHgRQl4zuPB+mUj78o3yveU7yXDxa5cOnxIIlEIpFIJBKJRCJheuYPiEwcRMVIe48AAAAASUVORK5CYII=" />
+              </defs>
+            </svg>
+          </button>
+          <button class="btn btn-warning avance">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink">
+              <rect x="30" y="30" width="30" height="30" transform="rotate(-180 30 30)" fill="url(#pattern0_167_216)" />
+              <defs>
+                <pattern id="pattern0_167_216" patternContentUnits="objectBoundingBox" width="1" height="1">
+                  <use xlink:href="#image0_167_216" transform="scale(0.0111111)" />
+                </pattern>
+                <image id="image0_167_216" width="90" height="90"
+                  xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFM0lEQVR4nO2dz2tkRRDHG9YfK4oe/Qkq6sWDB2OmalZlRPx5EPUQBX+A66oXhbgua9aT3tQ9rUEP2Vc9WfSWgz8PK+4foEhk1b14US+ucTXJvK5JMIHok5oZlkCSYTD9uvrN9AcKhmQyqf6m06+rXnU9YxKJRCKRSCQSiUQiMRjF3MSevFkfZ4sH2MJRR/ipI/iRCX9mC8uOcF1MXsvX5Hu997wrP5PT+B3yGQP+utFi9XjtOmfxVSb4ggkdWyx2aTlb+NwRTK6ewGvNKFPM4SWOas86glPO4j8exN3WHMEGW/zKWXimmG3sNaPCufcbl8lMcxbOliVuH9H/dBbeWp4Zu8IMK8XM2IWO8DBbWAot8FaDJWfhkPhkhglu1u52Fs7oC7xF8J/aFu8zVUfWRGfxA0f4r76oOy0n4htMF+89dLGpIq1ZuIEJv9EWkgc1gu/yDG82VUL+HT1t04rAlrebtXtNFWCLjzuCvyMQrfg/JsFQuwlPmphhCy+VuSfmUGLLGAheNDHCVH+sFxyoC8WexG5bfMLEhKxrzsKatjjsW2zC9ZxqD5gYcE24paIXvmJAy/MT+25SFVn2nrItikCMomSbV91nSzASgQhFGINpvbA64oiPPVtvrI2gIhdvNi5wFn/QHjyHFtvCmaCJqG4WTn/grCI2HgyWT2bCRe0Bs5YRLooGpQvNBFPqg7XasxoOlX/7yeIf6gMlXJc/+Mrs+FVi8jpkwOQs/l7qbTG5x6ctMosRTG3xzcLDIcXOCZ8uUWg4pS6yxUJm8Xb+5c36g+Eyh3CyFJHltn0sSaOVHYQOKbYknUopZejUXUQgMndn05H+voZZRvIMX/EudKe4RV1g7M0mWBMxtcV2Fj7xKrKUWDFBS1tg3jxIKQ3L8JF+fpe+jBC0vJaf9Wrh1MXlCGd2nsGYN6G5iS9oi8qRzmxnYb8/oS0c1RaUIxXbEb7tUWj8TFtMjlRsR/CxN6GrkhJ1Cmu2IzjtTWgm/NXbrCM8vDIzdrVRxLPYv3hzzGNa9HUTCRL0+Pkvwr+8OdU9yrB7p1aUZ/Jm2hlc6Wu5ik7oVdp3jYkE8SU6ob0tHbQ1vakFZ/hGdEuHz4shE0xpz+xoL4Zpe4eBtncpYCmCBCwpBMdgIfgBT+tZMXRJJYLnvAmd0qS4o9CtJt7uTeiU+McwiX9BzlZrLxMcUcLf+4XwvOMEk9oC84CBT6ibs21be9m70BJkpHID3DybN/qVPewK6RKgPpvtkBfQCNKKQVtk3qGuI3hJWIZPldxjAxe0hXbdDjRHJO0qJq/DFjnC2dJ7f4xyETqf/0PDa6ZsFj687VJJDWoPloe9EF2QQuwRns2TJuhhIcLvR05kG/iwkMAW7krH3wIhhxy1ZxmHs2NG9YiyxfkIRChKNYJvi7lbLzKayIH0bkO/oRW51Tpeu9HEQDuDe6rcdYb7tZHI4H4TE9ysPRpL0ol9NUah+oSJEWmPMxStfgg2pCbcxEyv5U9llxFnYS26Fj/9Wv9U8gJJ0JLrjakSy1S/ni1+rS6eHdjm1Vv67G6fDdMxR5A9346p75O9hes2vlMDHZ8yvNMME0W3a83BGFKs4oNk4cQnM6wsSD5bGnUT/BZ+mYBz0qh78aPa5WZUKGYbe6UVAxN8WWag0/1sOCn3+Eaq9fx2yH0/OcAuZ6s7T6PYtcCwLJ8ldRellQRUnWJuYo/UszmqP+8sviPVQFKD3Hs8yNKmx4Ms9R4PcrrzHnmvhf3ys+nxIIlEIpFIJBKJRCJhBuc/ZX4Qe9zgllAAAAAASUVORK5CYII=" />
+              </defs>
+            </svg>
+            Retornar
+          </button>
+        </div>
+      </div>
+
+      <!-- PAGE 6 -->
+      <div class="form-step">
+
+        <h1>CLASSIFICAÇÃO</h1>
+        <hr>
+
+        <!-- Natureza -->
+        <div class="row">
+          <div class="col-md-6">
+            <h5>Natureza</h5>
+          </div>
+
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="natureza-juridica" class="form-label">Natureza jurídica:</label>
+              <select class="form-select" id="natureza-juridica" name="natureza-juridica">
+                <option selected>Selecione</option>
+                <option value="1">Opção 1</option>
+                <option value="2">Opção 2</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="categoria-administrativa" class="form-label ">Categoria administrativa:</label>
+              <select class="form-select" id="categoria-administrativa" name="categoria-administrativa">
+                <option selected>Selecione</option>
+                <option value="1">Opção 1</option>
+                <option value="2">Opção 2</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="porte-instituicao" class="form-label ">Porte da instituição:</label>
+              <select class="form-select" id="porte-instituicao" name="porte-instituicao">
+                <option selected>Selecione</option>
+                <option value="1">Pequeno</option>
+                <option value="2">Médio</option>
+                <option value="3">Grande</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <hr>
+
+        <!-- CNAE - Fiscal -->
+        <div class="row">
+          <div class="col-md-6">
+            <h5>Classificação Nacional de Atividades Econômicas - Fiscal / CNAE - Fiscal</h5>
+          </div>
+
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="setor-atividade" class="form-label ">Setor de atividade econômica:</label>
+              <input type="text" class="form-control" id="setor-atividade" name="setor-atividade"
+                placeholder="Incluir Setor de Atividade Econômica">
+            </div>
+
+            <div class="mb-3">
+              <label for="capital-social" class="form-label">Capital Social:</label>
+              <input type="text" class="form-control" id="capital-social" name="capital-social"
+                placeholder="Insira o Capital Social">
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-5">
+          <button class="btn btn-primary avance">
+            Avançar
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink">
+              <rect width="30" height="30" fill="url(#pattern0_167_55)" />
+              <defs>
+                <pattern id="pattern0_167_55" patternContentUnits="objectBoundingBox" width="1" height="1">
+                  <use xlink:href="#image0_167_55" transform="scale(0.0111111)" />
+                </pattern>
+                <image id="image0_167_55" width="90" height="90"
+                  xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFLUlEQVR4nO2du2/cRRDHVzKPoCAoeUVyfLNHohQpCFSAjBDPAgHFb+eIjUJISAOSCVFw6OiAVMgS/4QLwkMCQgor+s2cDTKCJBQ0gYbwdLCpMJLtQ/O7I7zs04nb387+7vYjjXSyz+fdr9e7O7Oz8zMmkUgkEolEIpFIJBI9ks2OjDm+y2J+CByftI7fsUjnwfFF6/gXQPpdrHgtX0M6L+8B5DfkZ2oNulM+o9dfN1TYiYUd1jVfBEfvg6NfLXKrP6MVQH7PIk/Vs+ZtZpjZkTWvA+SnAemMdbTev7hb2ho4/thmNDl6YG6bGRb2ZHPXy0gDx5dKFHdTA+SfAPnVWrZ4oxlU9h1ZvLqOdByQLocW+L+C02VwfEzaZAaJOtK9FumCtsCbjPCv6q75gKk6MicC0lsWaUNb1K2taNuMfeSDa00V2YXzO8Hxgr6Q3Kvgn0HWtKZKyL+jn20ahxZ7pdbg+00VqDWaT1rHv+mLxv/LOg4RmpgB5CMl74lbQczROmT0nIkRcPyEOAfqIqFPsXNnYkLmNUBeVRcH/VoRU0F6yMRA7an5ejUXPu7RaMUigarIsveUbZG+GFy2Larus9vOiLoIrUA2o+lWR+zxsWejDZs1x4OKPD4+d5V1dE6/8xxa7AtBA1EShdPvNOtYg44GiycD0pJ6h1HHpO+iQelCW+Rp7c5abbEdHyv9+Mk6+iEOR4KnR7NPbhaT1yEdJnD8XanHYnLGpy2ybdv0v9tWw/zRoN6po4kShaYzEYjcklG8afscPxwscujow1JElmP7WIJGo1sIHVRsR+ulpDJI3oW2wPYvO9GtraGmEcD8Be9CS3JLBAK32h3kVRFTX2w65VflbHbEIi9rC2z/IbakheWPdR8cpU8jy17Tz9q5cPri2ghHNmT5Pm9Cg6PD2qLaWEe244MeheaT2oLaSMUGR695E9o6fldbTBur2I7e9ih0NUKioDBnA/Ln3oQGR9/4GnV1pOO7J87eYhTxKTYgf+2tYd7Coo5eNpEgTo8XoR3/7K1RnWhZ343arTyS/85YY/4mX9NVdELvatCtJhKkLTEKvVRWeFMLcPkr8U0dHhdDizytPbKjXQzT9o7DbO+Sw8JhHJbkgnMgFxzzQ54Ww9agBZXqSM94EzqFSbnLiG7e4U3oFPjnMIF/oXO3Wn2qsJEE/L0vhH8i14q1BbY9Oj7BDmcb/HxZLmtKN8ArQq91S3voi6JKgP5obg10Ao0gpRi0RbZb5HUETwnD5v5ykxyRvtcWGtoxkxMSdhWT14GTHC+VXvtjqJPQ8cof+iVTNnsnT2+X0OAQi7wUJBFdkERs7Q5bPZsyIS8LAfIXEXS6NdCXhYRalt+Trr8Foqjcoj7KOIiBozdD6brFFWVeHIIp49M92ZfXqAldiI0E7Yvp2mJwWbZ8e3Z2zMQAYH5flavO2G6OUSN/0MQEID0eS9DJ+rCikk4zMzEi5XEGotQPSplNOmxipij5U+FpBJBXoyvx0630T0UXyGVZb0yV2LmfRwF5PgLxWj3aonpJnz732TNxe5C0Ic6I+j7Zm7vuIrw14OhczTXvNoPEuFStadDRGEKsnTZMSZvMoLJ38vT2olA30rcKI/hHKdRtJxZuMMPC6IG5bVKKwSJ9VLKjsyYHqXLGN1Sl5zdDzv3kArvcrZanUfQ/cuUz6JTkXZSWElB5stkRyWezGT8Ljl6XbCDJQZZHgRQl4zuPB+mUj78o3yveU7yXDxa5cOnxIIlEIpFIJBKJRCJheuYPiEwcRMVIe48AAAAASUVORK5CYII=" />
+              </defs>
+            </svg>
+          </button>
+          <button class="btn btn-warning avance">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink">
+              <rect x="30" y="30" width="30" height="30" transform="rotate(-180 30 30)" fill="url(#pattern0_167_216)" />
+              <defs>
+                <pattern id="pattern0_167_216" patternContentUnits="objectBoundingBox" width="1" height="1">
+                  <use xlink:href="#image0_167_216" transform="scale(0.0111111)" />
+                </pattern>
+                <image id="image0_167_216" width="90" height="90"
+                  xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFM0lEQVR4nO2dz2tkRRDHG9YfK4oe/Qkq6sWDB2OmalZlRPx5EPUQBX+A66oXhbgua9aT3tQ9rUEP2Vc9WfSWgz8PK+4foEhk1b14US+ucTXJvK5JMIHok5oZlkCSYTD9uvrN9AcKhmQyqf6m06+rXnU9YxKJRCKRSCQSiUQiMRjF3MSevFkfZ4sH2MJRR/ipI/iRCX9mC8uOcF1MXsvX5Hu997wrP5PT+B3yGQP+utFi9XjtOmfxVSb4ggkdWyx2aTlb+NwRTK6ewGvNKFPM4SWOas86glPO4j8exN3WHMEGW/zKWXimmG3sNaPCufcbl8lMcxbOliVuH9H/dBbeWp4Zu8IMK8XM2IWO8DBbWAot8FaDJWfhkPhkhglu1u52Fs7oC7xF8J/aFu8zVUfWRGfxA0f4r76oOy0n4htMF+89dLGpIq1ZuIEJv9EWkgc1gu/yDG82VUL+HT1t04rAlrebtXtNFWCLjzuCvyMQrfg/JsFQuwlPmphhCy+VuSfmUGLLGAheNDHCVH+sFxyoC8WexG5bfMLEhKxrzsKatjjsW2zC9ZxqD5gYcE24paIXvmJAy/MT+25SFVn2nrItikCMomSbV91nSzASgQhFGINpvbA64oiPPVtvrI2gIhdvNi5wFn/QHjyHFtvCmaCJqG4WTn/grCI2HgyWT2bCRe0Bs5YRLooGpQvNBFPqg7XasxoOlX/7yeIf6gMlXJc/+Mrs+FVi8jpkwOQs/l7qbTG5x6ctMosRTG3xzcLDIcXOCZ8uUWg4pS6yxUJm8Xb+5c36g+Eyh3CyFJHltn0sSaOVHYQOKbYknUopZejUXUQgMndn05H+voZZRvIMX/EudKe4RV1g7M0mWBMxtcV2Fj7xKrKUWDFBS1tg3jxIKQ3L8JF+fpe+jBC0vJaf9Wrh1MXlCGd2nsGYN6G5iS9oi8qRzmxnYb8/oS0c1RaUIxXbEb7tUWj8TFtMjlRsR/CxN6GrkhJ1Cmu2IzjtTWgm/NXbrCM8vDIzdrVRxLPYv3hzzGNa9HUTCRL0+Pkvwr+8OdU9yrB7p1aUZ/Jm2hlc6Wu5ik7oVdp3jYkE8SU6ob0tHbQ1vakFZ/hGdEuHz4shE0xpz+xoL4Zpe4eBtncpYCmCBCwpBMdgIfgBT+tZMXRJJYLnvAmd0qS4o9CtJt7uTeiU+McwiX9BzlZrLxMcUcLf+4XwvOMEk9oC84CBT6ibs21be9m70BJkpHID3DybN/qVPewK6RKgPpvtkBfQCNKKQVtk3qGuI3hJWIZPldxjAxe0hXbdDjRHJO0qJq/DFjnC2dJ7f4xyETqf/0PDa6ZsFj687VJJDWoPloe9EF2QQuwRns2TJuhhIcLvR05kG/iwkMAW7krH3wIhhxy1ZxmHs2NG9YiyxfkIRChKNYJvi7lbLzKayIH0bkO/oRW51Tpeu9HEQDuDe6rcdYb7tZHI4H4TE9ysPRpL0ol9NUah+oSJEWmPMxStfgg2pCbcxEyv5U9llxFnYS26Fj/9Wv9U8gJJ0JLrjakSy1S/ni1+rS6eHdjm1Vv67G6fDdMxR5A9346p75O9hes2vlMDHZ8yvNMME0W3a83BGFKs4oNk4cQnM6wsSD5bGnUT/BZ+mYBz0qh78aPa5WZUKGYbe6UVAxN8WWag0/1sOCn3+Eaq9fx2yH0/OcAuZ6s7T6PYtcCwLJ8ldRellQRUnWJuYo/UszmqP+8sviPVQFKD3Hs8yNKmx4Ms9R4PcrrzHnmvhf3ys+nxIIlEIpFIJBKJRCJhBuc/ZX4Qe9zgllAAAAAASUVORK5CYII=" />
+              </defs>
+            </svg>
+            Retornar
+          </button>
+        </div>
+      </div>
+
+      <!-- PAGE 7 -->
+      <div class="form-step">
+
+
+        <h1>HISTÓRICO</h1>
+        <hr>
+
+        <!-- Histórico -->
+        <div class="row">
+          <div class="col-md-6">
+            <h5>Histórico</h5>
+          </div>
+
+          <div class="col-md-6">
+            <!-- Data da Fundação -->
+            <div class="mb-3">
+              <label for="data-fundacao" class="form-label">Data da Fundação:</label>
+              <input type="date" class="form-control" id="data-fundacao" name="data-fundacao">
+            </div>
+
+            <!-- Histórico (Textarea) -->
+            <div class="mb-3">
+              <label for="historico" class="form-label">Informe o histórico:</label>
+              <textarea class="form-control" id="historico" name="historico" rows="4"
+                placeholder="Escreva sobre a história da instituição"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-5">
+          <button class="btn btn-primary avance">
+            Avançar
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink">
+              <rect width="30" height="30" fill="url(#pattern0_167_55)" />
+              <defs>
+                <pattern id="pattern0_167_55" patternContentUnits="objectBoundingBox" width="1" height="1">
+                  <use xlink:href="#image0_167_55" transform="scale(0.0111111)" />
+                </pattern>
+                <image id="image0_167_55" width="90" height="90"
+                  xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFLUlEQVR4nO2du2/cRRDHVzKPoCAoeUVyfLNHohQpCFSAjBDPAgHFb+eIjUJISAOSCVFw6OiAVMgS/4QLwkMCQgor+s2cDTKCJBQ0gYbwdLCpMJLtQ/O7I7zs04nb387+7vYjjXSyz+fdr9e7O7Oz8zMmkUgkEolEIpFIJBI9ks2OjDm+y2J+CByftI7fsUjnwfFF6/gXQPpdrHgtX0M6L+8B5DfkZ2oNulM+o9dfN1TYiYUd1jVfBEfvg6NfLXKrP6MVQH7PIk/Vs+ZtZpjZkTWvA+SnAemMdbTev7hb2ho4/thmNDl6YG6bGRb2ZHPXy0gDx5dKFHdTA+SfAPnVWrZ4oxlU9h1ZvLqOdByQLocW+L+C02VwfEzaZAaJOtK9FumCtsCbjPCv6q75gKk6MicC0lsWaUNb1K2taNuMfeSDa00V2YXzO8Hxgr6Q3Kvgn0HWtKZKyL+jn20ahxZ7pdbg+00VqDWaT1rHv+mLxv/LOg4RmpgB5CMl74lbQczROmT0nIkRcPyEOAfqIqFPsXNnYkLmNUBeVRcH/VoRU0F6yMRA7an5ejUXPu7RaMUigarIsveUbZG+GFy2Larus9vOiLoIrUA2o+lWR+zxsWejDZs1x4OKPD4+d5V1dE6/8xxa7AtBA1EShdPvNOtYg44GiycD0pJ6h1HHpO+iQelCW+Rp7c5abbEdHyv9+Mk6+iEOR4KnR7NPbhaT1yEdJnD8XanHYnLGpy2ybdv0v9tWw/zRoN6po4kShaYzEYjcklG8afscPxwscujow1JElmP7WIJGo1sIHVRsR+ulpDJI3oW2wPYvO9GtraGmEcD8Be9CS3JLBAK32h3kVRFTX2w65VflbHbEIi9rC2z/IbakheWPdR8cpU8jy17Tz9q5cPri2ghHNmT5Pm9Cg6PD2qLaWEe244MeheaT2oLaSMUGR695E9o6fldbTBur2I7e9ih0NUKioDBnA/Ln3oQGR9/4GnV1pOO7J87eYhTxKTYgf+2tYd7Coo5eNpEgTo8XoR3/7K1RnWhZ343arTyS/85YY/4mX9NVdELvatCtJhKkLTEKvVRWeFMLcPkr8U0dHhdDizytPbKjXQzT9o7DbO+Sw8JhHJbkgnMgFxzzQ54Ww9agBZXqSM94EzqFSbnLiG7e4U3oFPjnMIF/oXO3Wn2qsJEE/L0vhH8i14q1BbY9Oj7BDmcb/HxZLmtKN8ArQq91S3voi6JKgP5obg10Ao0gpRi0RbZb5HUETwnD5v5ykxyRvtcWGtoxkxMSdhWT14GTHC+VXvtjqJPQ8cof+iVTNnsnT2+X0OAQi7wUJBFdkERs7Q5bPZsyIS8LAfIXEXS6NdCXhYRalt+Trr8Foqjcoj7KOIiBozdD6brFFWVeHIIp49M92ZfXqAldiI0E7Yvp2mJwWbZ8e3Z2zMQAYH5flavO2G6OUSN/0MQEID0eS9DJ+rCikk4zMzEi5XEGotQPSplNOmxipij5U+FpBJBXoyvx0630T0UXyGVZb0yV2LmfRwF5PgLxWj3aonpJnz732TNxe5C0Ic6I+j7Zm7vuIrw14OhczTXvNoPEuFStadDRGEKsnTZMSZvMoLJ38vT2olA30rcKI/hHKdRtJxZuMMPC6IG5bVKKwSJ9VLKjsyYHqXLGN1Sl5zdDzv3kArvcrZanUfQ/cuUz6JTkXZSWElB5stkRyWezGT8Ljl6XbCDJQZZHgRQl4zuPB+mUj78o3yveU7yXDxa5cOnxIIlEIpFIJBKJRCJheuYPiEwcRMVIe48AAAAASUVORK5CYII=" />
+              </defs>
+            </svg>
+          </button>
+          <button class="btn btn-warning avance">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink">
+              <rect x="30" y="30" width="30" height="30" transform="rotate(-180 30 30)" fill="url(#pattern0_167_216)" />
+              <defs>
+                <pattern id="pattern0_167_216" patternContentUnits="objectBoundingBox" width="1" height="1">
+                  <use xlink:href="#image0_167_216" transform="scale(0.0111111)" />
+                </pattern>
+                <image id="image0_167_216" width="90" height="90"
+                  xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFM0lEQVR4nO2dz2tkRRDHG9YfK4oe/Qkq6sWDB2OmalZlRPx5EPUQBX+A66oXhbgua9aT3tQ9rUEP2Vc9WfSWgz8PK+4foEhk1b14US+ucTXJvK5JMIHok5oZlkCSYTD9uvrN9AcKhmQyqf6m06+rXnU9YxKJRCKRSCQSiUQiMRjF3MSevFkfZ4sH2MJRR/ipI/iRCX9mC8uOcF1MXsvX5Hu997wrP5PT+B3yGQP+utFi9XjtOmfxVSb4ggkdWyx2aTlb+NwRTK6ewGvNKFPM4SWOas86glPO4j8exN3WHMEGW/zKWXimmG3sNaPCufcbl8lMcxbOliVuH9H/dBbeWp4Zu8IMK8XM2IWO8DBbWAot8FaDJWfhkPhkhglu1u52Fs7oC7xF8J/aFu8zVUfWRGfxA0f4r76oOy0n4htMF+89dLGpIq1ZuIEJv9EWkgc1gu/yDG82VUL+HT1t04rAlrebtXtNFWCLjzuCvyMQrfg/JsFQuwlPmphhCy+VuSfmUGLLGAheNDHCVH+sFxyoC8WexG5bfMLEhKxrzsKatjjsW2zC9ZxqD5gYcE24paIXvmJAy/MT+25SFVn2nrItikCMomSbV91nSzASgQhFGINpvbA64oiPPVtvrI2gIhdvNi5wFn/QHjyHFtvCmaCJqG4WTn/grCI2HgyWT2bCRe0Bs5YRLooGpQvNBFPqg7XasxoOlX/7yeIf6gMlXJc/+Mrs+FVi8jpkwOQs/l7qbTG5x6ctMosRTG3xzcLDIcXOCZ8uUWg4pS6yxUJm8Xb+5c36g+Eyh3CyFJHltn0sSaOVHYQOKbYknUopZejUXUQgMndn05H+voZZRvIMX/EudKe4RV1g7M0mWBMxtcV2Fj7xKrKUWDFBS1tg3jxIKQ3L8JF+fpe+jBC0vJaf9Wrh1MXlCGd2nsGYN6G5iS9oi8qRzmxnYb8/oS0c1RaUIxXbEb7tUWj8TFtMjlRsR/CxN6GrkhJ1Cmu2IzjtTWgm/NXbrCM8vDIzdrVRxLPYv3hzzGNa9HUTCRL0+Pkvwr+8OdU9yrB7p1aUZ/Jm2hlc6Wu5ik7oVdp3jYkE8SU6ob0tHbQ1vakFZ/hGdEuHz4shE0xpz+xoL4Zpe4eBtncpYCmCBCwpBMdgIfgBT+tZMXRJJYLnvAmd0qS4o9CtJt7uTeiU+McwiX9BzlZrLxMcUcLf+4XwvOMEk9oC84CBT6ibs21be9m70BJkpHID3DybN/qVPewK6RKgPpvtkBfQCNKKQVtk3qGuI3hJWIZPldxjAxe0hXbdDjRHJO0qJq/DFjnC2dJ7f4xyETqf/0PDa6ZsFj687VJJDWoPloe9EF2QQuwRns2TJuhhIcLvR05kG/iwkMAW7krH3wIhhxy1ZxmHs2NG9YiyxfkIRChKNYJvi7lbLzKayIH0bkO/oRW51Tpeu9HEQDuDe6rcdYb7tZHI4H4TE9ysPRpL0ol9NUah+oSJEWmPMxStfgg2pCbcxEyv5U9llxFnYS26Fj/9Wv9U8gJJ0JLrjakSy1S/ni1+rS6eHdjm1Vv67G6fDdMxR5A9346p75O9hes2vlMDHZ8yvNMME0W3a83BGFKs4oNk4cQnM6wsSD5bGnUT/BZ+mYBz0qh78aPa5WZUKGYbe6UVAxN8WWag0/1sOCn3+Eaq9fx2yH0/OcAuZ6s7T6PYtcCwLJ8ldRellQRUnWJuYo/UszmqP+8sviPVQFKD3Hs8yNKmx4Ms9R4PcrrzHnmvhf3ys+nxIIlEIpFIJBKJRCJhBuc/ZX4Qe9zgllAAAAAASUVORK5CYII=" />
+              </defs>
+            </svg>
+            Retornar
+          </button>
+        </div>
+      </div>
+
+      <!-- PAGE 8 -->
+      <div class="form-step">
+        <h1>MISSÃO INSTITUCIONAL</h1>
+        <hr>
+
+        <!-- Missão -->
+        <div class="row">
+          <div class="col-md-6">
+            <h5>Missão</h5>
+          </div>
+
+          <div class="col-md-6">
+            <!-- Missão (Textarea) -->
+            <div class="mb-3">
+              <label for="missao" class="form-label">Informe a missão da instituição:</label>
+              <textarea class="form-control" id="missao" name="missao" rows="4"
+                placeholder="Escreva a missão da instituição"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-5">
+          <button type="button" class="btn btn-primary avance" data-bs-toggle="modal"
+            data-bs-target="#modalConfirmacao">
+            Avançar
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink">
+              <rect width="30" height="30" fill="url(#pattern0_167_55)" />
+              <defs>
+                <pattern id="pattern0_167_55" patternContentUnits="objectBoundingBox" width="1" height="1">
+                  <use xlink:href="#image0_167_55" transform="scale(0.0111111)" />
+                </pattern>
+                <image id="image0_167_55" width="90" height="90"
+                  xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFLUlEQVR4nO2du2/cRRDHVzKPoCAoeUVyfLNHohQpCFSAjBDPAgHFb+eIjUJISAOSCVFw6OiAVMgS/4QLwkMCQgor+s2cDTKCJBQ0gYbwdLCpMJLtQ/O7I7zs04nb387+7vYjjXSyz+fdr9e7O7Oz8zMmkUgkEolEIpFIJBI9ks2OjDm+y2J+CByftI7fsUjnwfFF6/gXQPpdrHgtX0M6L+8B5DfkZ2oNulM+o9dfN1TYiYUd1jVfBEfvg6NfLXKrP6MVQH7PIk/Vs+ZtZpjZkTWvA+SnAemMdbTev7hb2ho4/thmNDl6YG6bGRb2ZHPXy0gDx5dKFHdTA+SfAPnVWrZ4oxlU9h1ZvLqOdByQLocW+L+C02VwfEzaZAaJOtK9FumCtsCbjPCv6q75gKk6MicC0lsWaUNb1K2taNuMfeSDa00V2YXzO8Hxgr6Q3Kvgn0HWtKZKyL+jn20ahxZ7pdbg+00VqDWaT1rHv+mLxv/LOg4RmpgB5CMl74lbQczROmT0nIkRcPyEOAfqIqFPsXNnYkLmNUBeVRcH/VoRU0F6yMRA7an5ejUXPu7RaMUigarIsveUbZG+GFy2Larus9vOiLoIrUA2o+lWR+zxsWejDZs1x4OKPD4+d5V1dE6/8xxa7AtBA1EShdPvNOtYg44GiycD0pJ6h1HHpO+iQelCW+Rp7c5abbEdHyv9+Mk6+iEOR4KnR7NPbhaT1yEdJnD8XanHYnLGpy2ybdv0v9tWw/zRoN6po4kShaYzEYjcklG8afscPxwscujow1JElmP7WIJGo1sIHVRsR+ulpDJI3oW2wPYvO9GtraGmEcD8Be9CS3JLBAK32h3kVRFTX2w65VflbHbEIi9rC2z/IbakheWPdR8cpU8jy17Tz9q5cPri2ghHNmT5Pm9Cg6PD2qLaWEe244MeheaT2oLaSMUGR695E9o6fldbTBur2I7e9ih0NUKioDBnA/Ln3oQGR9/4GnV1pOO7J87eYhTxKTYgf+2tYd7Coo5eNpEgTo8XoR3/7K1RnWhZ343arTyS/85YY/4mX9NVdELvatCtJhKkLTEKvVRWeFMLcPkr8U0dHhdDizytPbKjXQzT9o7DbO+Sw8JhHJbkgnMgFxzzQ54Ww9agBZXqSM94EzqFSbnLiG7e4U3oFPjnMIF/oXO3Wn2qsJEE/L0vhH8i14q1BbY9Oj7BDmcb/HxZLmtKN8ArQq91S3voi6JKgP5obg10Ao0gpRi0RbZb5HUETwnD5v5ykxyRvtcWGtoxkxMSdhWT14GTHC+VXvtjqJPQ8cof+iVTNnsnT2+X0OAQi7wUJBFdkERs7Q5bPZsyIS8LAfIXEXS6NdCXhYRalt+Trr8Foqjcoj7KOIiBozdD6brFFWVeHIIp49M92ZfXqAldiI0E7Yvp2mJwWbZ8e3Z2zMQAYH5flavO2G6OUSN/0MQEID0eS9DJ+rCikk4zMzEi5XEGotQPSplNOmxipij5U+FpBJBXoyvx0630T0UXyGVZb0yV2LmfRwF5PgLxWj3aonpJnz732TNxe5C0Ic6I+j7Zm7vuIrw14OhczTXvNoPEuFStadDRGEKsnTZMSZvMoLJ38vT2olA30rcKI/hHKdRtJxZuMMPC6IG5bVKKwSJ9VLKjsyYHqXLGN1Sl5zdDzv3kArvcrZanUfQ/cuUz6JTkXZSWElB5stkRyWezGT8Ljl6XbCDJQZZHgRQl4zuPB+mUeVxk2SYIs7w/s9YlLZZP/ra8p/kYNXw40msZoXYs7VdgmP0vLFy8nP6DphZToc5dbUE3S/6eA23IXA==" />
+            </svg>
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="modalConfirmacao" tabindex="-1" aria-labelledby="modalConfirmacaoLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modalConfirmacaoLabel">Confirmar Cadastro</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  Tem certeza de que deseja cadastrar esta instituição?
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                  <button type="submit" class="btn btn-primary">Confirmar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-warning avance">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink">
+              <rect x="30" y="30" width="30" height="30" transform="rotate(-180 30 30)" fill="url(#pattern0_167_216)" />
+              <defs>
+                <pattern id="pattern0_167_216" patternContentUnits="objectBoundingBox" width="1" height="1">
+                  <use xlink:href="#image0_167_216" transform="scale(0.0111111)" />
+                </pattern>
+                <image id="image0_167_216" width="90" height="90"
+                  xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFM0lEQVR4nO2dz2tkRRDHG9YfK4oe/Qkq6sWDB2OmalZlRPx5EPUQBX+A66oXhbgua9aT3tQ9rUEP2Vc9WfSWgz8PK+4foEhk1b14US+ucTXJvK5JMIHok5oZlkCSYTD9uvrN9AcKhmQyqf6m06+rXnU9YxKJRCKRSCQSiUQiMRjF3MSevFkfZ4sH2MJRR/ipI/iRCX9mC8uOcF1MXsvX5Hu997wrP5PT+B3yGQP+utFi9XjtOmfxVSb4ggkdWyx2aTlb+NwRTK6ewGvNKFPM4SWOas86glPO4j8exN3WHMEGW/zKWXimmG3sNaPCufcbl8lMcxbOliVuH9H/dBbeWp4Zu8IMK8XM2IWO8DBbWAot8FaDJWfhkPhkhglu1u52Fs7oC7xF8J/aFu8zVUfWRGfxA0f4r76oOy0n4htMF+89dLGpIq1ZuIEJv9EWkgc1gu/yDG82VUL+HT1t04rAlrebtXtNFWCLjzuCvyMQrfg/JsFQuwlPmphhCy+VuSfmUGLLGAheNDHCVH+sFxyoC8WexG5bfMLEhKxrzsKatjjsW2zC9ZxqD5gYcE24paIXvmJAy/MT+25SFVn2nrItikCMomSbV91nSzASgQhFGINpvbA64oiPPVtvrI2gIhdvNi5wFn/QHjyHFtvCmaCJqG4WTn/grCI2HgyWT2bCRe0Bs5YRLooGpQvNBFPqg7XasxoOlX/7yeIf6gMlXJc/+Mrs+FVi8jpkwOQs/l7qbTG5x6ctMosRTG3xzcLDIcXOCZ8uUWg4pS6yxUJm8Xb+5c36g+Eyh3CyFJHltn0sSaOVHYQOKbYknUopZejUXUQgMndn05H+voZZRvIMX/EudKe4RV1g7M0mWBMxtcV2Fj7xKrKUWDFBS1tg3jxIKQ3L8JF+fpe+jBC0vJaf9Wrh1MXlCGd2nsGYN6G5iS9oi8qRzmxnYb8/oS0c1RaUIxXbEb7tUWj8TFtMjlRsR/CxN6GrkhJ1Cmu2IzjtTWgm/NXbrCM8vDIzdrVRxLPYv3hzzGNa9HUTCRL0+Pkvwr+8OdU9yrB7p1aUZ/Jm2hlc6Wu5ik7oVdp3jYkE8SU6ob0tHbQ1vakFZ/hGdEuHz4shE0xpz+xoL4Zpe4eBtncpYCmCBCwpBMdgIfgBT+tZMXRJJYLnvAmd0qS4o9CtJt7uTeiU+McwiX9BzlZrLxMcUcLf+4XwvOMEk9oC84CBT6ibs21be9m70BJkpHID3DybN/qVPewK6RKgPpvtkBfQCNKKQVtk3qGuI3hJWIZPldxjAxe0hXbdDjRHJO0qJq/DFjnC2dJ7f4xyETqf/0PDa6ZsFj687VJJDWoPloe9EF2QQuwRns2TJuhhIcLvR05kG/iwkMAW7krH3wIhhxy1ZxmHs2NG9YiyxfkIRChKNYJvi7lbLzKayIH0bkO/oRW51Tpeu9HEQDuDe6rcdYb7tZHI4H4TE9ysPRpL0ol9NUah+oSJEWmPMxStfgg2pCbcxEyv5U9llxFnYS26Fj/9Wv9U8gJJ0JLrjakSy1S/ni1+rS6eHdjm1Vv67G6fDdMxR5A9346p75O9hes2vlMDHZ8yvNMME0W3a83BGFKs4oNk4cQnM6wsSD5bGnUT/BZ+mYBz0qh78aPa5WZUKGYbe6UVAxN8WWag0/1sOCn3+Eaq9fx2yH0/OcAuZ6s7T6PYtcCwLJ8ldRellQRUnWJuYo/UszmqP+8sviPVQFKD3Hs8yNKmx4Ms9R4PcrrzHnmvhf3ys+nxIIlEIpFIJBKJRCJhBuc/ZX4Qe9zgllAAAAAASUVORK5CYII=" />
+              </defs>
+            </svg>
+            Retornar
+          </button>
+        </div>
+      </div>
     </form>
   </section>
 </div>
