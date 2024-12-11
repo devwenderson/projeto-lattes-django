@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from instituicao.models import Instituicao
 from django.urls import reverse_lazy
+
+
 
 def index(request):
     return render(request, 'index.html')
@@ -143,6 +145,8 @@ def cadastro_instituicao(request):
             historico=historico,
             missao=missao
         )
+        
         instituicao.save()
-        reverse_lazy('buscar-instituicao')
-    return render(request, 'instituicao/create.html')
+        return redirect(reverse_lazy('cadi-index'))
+    else:
+        return render(request, 'instituicao/create.html')

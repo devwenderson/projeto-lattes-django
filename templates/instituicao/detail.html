@@ -3,8 +3,10 @@
 {% block content %}
 <section class="form-container container">
     <div class="row">
+
+        
         <div class="col-md-12">
-            <h1>IFRN - Campus Ceará Mirim</h1>
+            <h1>{{instituicao.nome}}</h1>
         </div>
 
         <hr>
@@ -17,19 +19,19 @@
                     <tbody>
                         <tr>
                             <th>Nome da instituição</th>
-                            <td>IFRN - Campus Ceará Mirim</td>
+                            <td>{{instituicao.nome}}</td>
                         </tr>
                         <tr>
                             <th>Sigla da instituição</th>
-                            <td>IFRN</td>
+                            <td>{{instituicao.sigla}}</td>
                         </tr>
                         <tr>
                             <th>CNPJ</th>
-                            <td>10.877.412/0019-97</td>
+                            <td>{{instituicao.cnpj}}</td>
                         </tr>
                         <tr>
                             <th>Razão social</th>
-                            <td>IFRN - Campus Ceará Mirim</td>
+                            <td>{{instituicao.razao_social}}</td>
                         </tr>
                         <tr>
                             <th>Código no CI</th>
@@ -37,11 +39,11 @@
                         </tr>
                         <tr>
                             <th>Idioma</th>
-                            <td>Português</td>
+                            <td>{{instituicao.idioma}}</td>
                         </tr>
                         <tr>
                             <th>Situação</th>
-                            <td>Ativa</td>
+                            <td>{{instituicao.situacao_cadastral}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -54,27 +56,27 @@
                     <tbody>
                         <tr>
                             <th>Endereço</th>
-                            <td>BR-406, Km 145</td>
+                            <td>{{instituicao.endereco}}</td>
                         </tr>
                         <tr>
                             <th>Bairro</th>
-                            <td>Bairro Planalto</td>
+                            <td>{{instituicao.bairro}}</td>
                         </tr>
                         <tr>
                             <th>Município</th>
-                            <td>Ceará-Mirim</td>
+                            <td>{{instituicao.municipio}}</td>
                         </tr>
                         <tr>
                             <th>UF</th>
-                            <td>RN</td>
+                            <td>{{instituicao.uf}}</td>
                         </tr>
                         <tr>
                             <th>CEP</th>
-                            <td>59570-000</td>
+                            <td>{{instituicao.cep}}</td>
                         </tr>
                         <tr>
                             <th>País</th>
-                            <td>Brasil</td>
+                            <td>{{instituicao.pais}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -91,20 +93,20 @@
                         </tr>
                         <tr>
                             <th>Telefone 1</th>
-                            <td>40050750, Ramal: 4113</td>
+                            <td>{{instituicao.telefone1}}</td>
                         </tr>
                         <tr>
                             <th>FAX</th>
-                            <td>40052694</td>
+                            <td>{{instituicao.fax}}</td>
                         </tr>
                         <tr>
                             <th>E-mail institucional</th>
-                            <td>gabin.cm@ifrn.edu.br</td>
+                            <td>{{instituicao.email}}</td>
                         </tr>
                         <tr>
                             <th>Website</th>
                             <td><a
-                                    href="http://portal.ifrn.edu.br/campus/ceara-mirim">portal.ifrn.edu.br/campus/ceara-mirim</a>
+                                    href="">{{instituicao.website}}</a>
                             </td>
                         </tr>
                     </tbody>
@@ -118,16 +120,15 @@
                     <tbody>
                         <tr>
                             <th>Natureza jurídica</th>
-                            <td>Administração Pública / Autarquia Federal</td>
+                            <td>{{instituicao.natureza_juridica}}</td>
                         </tr>
                         <tr>
                             <th>Categoria administrativa</th>
-                            <td>Ensino Superior Público Federal</td>
+                            <td>{{instituicao.categoria_administrativa}}</td>
                         </tr>
                         <tr>
                             <th>Setor da Atividade Econômica</th>
-                            <td>85.4 - Educação profissional de nível técnico e tecnológico<br>85.3 - Educação
-                                superior</td>
+                            <td>{{instituicao.setor_atividade}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -137,10 +138,7 @@
             <section class="mb-5">
                 <h3>Histórico da Instituição</h3>
                 <p class="text-justify">
-                    A história desta instituição começou em 23 de setembro de 1909 quando o então Presidente Nilo
-                    Peçanha assinou o decreto de criação de 19 Escolas de Aprendizes Artífices, entre as quais a de
-                    Natal. Instalada em janeiro de 1910...
-                    <!-- Texto completo do histórico -->
+                    {{instituicao.historico}}
                 </p>
             </section>
 
@@ -148,10 +146,7 @@
             <section class="mb-5">
                 <h3>Missão da Instituição</h3>
                 <p class="text-justify">
-                    Promover a educação científico–tecnológico–humanística, visando à formação integral do
-                    profissional-cidadão crítico-reflexivo, competente técnica e eticamente e comprometido com as
-                    transformações sociais, políticas e culturais...
-                    <!-- Texto completo da missão -->
+                    {{instituicao.missao}}
                 </p>
             </section>
 
@@ -162,27 +157,20 @@
                     <tbody>
                         <tr>
                             <th>Nome completo</th>
-                            <td>José Arnóbio de Araújo Filho</td>
-                        </tr>
-                        <tr>
-                            <th>Nacionalidade</th>
-                            <td>Brasileira</td>
+                            <td>{{instituicao.nome_representante}}</td>
                         </tr>
                         <tr>
                             <th>País de nascimento</th>
-                            <td>Brasil</td>
+                            <td>{{instituicao.pais}}</td>
                         </tr>
                         <tr>
                             <th>Telefone</th>
-                            <td>(84) 40050750</td>
+                            <td>{{instituicao.telefone2}}</td>
                         </tr>
-                        <tr>
-                            <th>E-mail</th>
-                            <td>arnobio.araujo@ifrn.edu.br</td>
-                        </tr>
+                        
                         <tr>
                             <th>Situação</th>
-                            <td>Ativa</td>
+                            <td>{{instituicao.situacao_cadastral}}</td>
                         </tr>
                     </tbody>
                 </table>
