@@ -94,17 +94,17 @@ h1, h5{
     align-items: center;
 }
 
-.icon > .icon-container {
+.icon > .step {
     background-color: var(--clr-grey);
     padding: 15px;
     border-radius: 50%;
 }
 
-.icon > .icon-container.active {
+.icon > .step.active {
     background-color: var(--verde-limao);
 }
 
-.icon > .icon-container:hover {
+.icon > .step:hover {
     scale: 1.1;
     cursor: pointer;
     transition: .1s;
@@ -171,29 +171,14 @@ h1, h5{
 /* MULTI STEP FORM */
 
 /* Remover a margem dos passos */
-.form-step {
+.tab {
     display: none;
 }
 
-.form-step-active {
-    display: block;
+.step.finish {
+    background-color: #04AA6D;
 }
 
-/* Estilo para os botões "Anterior" e "Próximo" */
-button {
-    margin-top: 20px;
+input.invalid {
+    background-color: #ffdddd;
 }
-
-button.prev-btn {
-    float: left;
-}
-
-button.next-btn {
-    float: right;
-}
-
-/* Estilo extra para o cabeçalho */
-h3 {
-    margin-bottom: 20px;
-}
-

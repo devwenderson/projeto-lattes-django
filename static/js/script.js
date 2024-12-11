@@ -1,44 +1,71 @@
-// Seleciona os passos e os botões
-const steps = document.querySelectorAll('.form-step');
-const nextButtons = document.querySelectorAll('.next');
-const prevButtons = document.querySelectorAll('.prev');
+var currentTab = 0;
+showTab(currentTab);
 
-// Índice do passo atual
-let currentStep = 1;
+function showTab(indexTab) {
+    var tabs = document.getElementsByClassName('tab');
+    tabs[indexTab].style.display = 'block';
 
-// Função para mostrar o passo atual
-function showStep(stepIndex) {
-    steps.forEach((step, index) => {
-        if (index === stepIndex) {
-            step.classList.add('form-step-active');
-        } else {
-            step.classList.remove('form-step-active');
-        }
-    });
+    // Se estiver na primeira aba
+    if (indexTab == 0) {
+        document.getElementById('prevBtn').style.display = 'none';
+    } else {
+        document.getElementById('prevBtn').style.display = 'inline';
+    }
+
+    // Se não estiver na primeira aba
+    if (indexTab == (tabs.length - 1)) {
+        document.getElementById('nextBtn').innerHTML = 'Cadastrar'
+    } else {
+        document.getElementById('nextBtn').innerHTML = 'Avançar'
+    }
+
+    changeStepIndicator(indexTab);
 }
 
-// Navegar para o próximo passo
-nextButtons.forEach(button => {
-    button.addEventListener('click', (event) => {
-        event.preventDefault();  
-        if (currentStep < steps.length - 1) {
-            currentStep++;
-            showStep(currentStep);
-            alert(currentStep)
-        }
-    });
-});
+function nextPrev(n) {
+    // Todas as tabs 
+    let tabs = document.getElementsByClassName('tab');
+    // Caso algum campo seja inválido
+    if (n == 1 && !validadeForm()) return false
 
-// Navegar para o passo anterior
-prevButtons.forEach(button => {
-    button.addEventListener('click', (event) => {
-        event.preventDefault();
-        if (currentStep > 0) {
-            currentStep--;
-            showStep(currentStep);  
-        }
-    });
-});
+    // Esconde a aba atual
+    tabs[currentTab].style.display = 'none'
 
-// Inicializa o formulário mostrando o primeiro passo
-showStep(currentStep);
+    // Aumenta ou diminui o current tab em 1
+    currentTab = currentTab + n
+
+    // Se chegar na última aba
+    if (currentTab >= tabs.length) {
+        document.getElementById('create-form').submit();
+        return false;
+    }
+    showTab(currentTab);
+};
+
+function validadeForm() {
+    let tabs = document.getElementsByClassName('tab');
+    let inputs = tabs[currentTab].getElementsByTagName('input');
+    let valid = true
+
+    // Loop para verificar os inputs
+    for (i = 0; i < inputs.length; i++) {
+        // Se o campo estiver vazio
+        if (inputs[i].value == '') {
+            inputs[i].className = 'form-control invalid';
+            valid = false
+        }
+    };
+
+    if (valid) {
+        document.getElementsByClassName('step')[currentTab].className += 'finish';
+    };
+    return valid;
+}
+
+function changeStepIndicator (indexTab) {
+    let steps = document.getElementsByClassName('step');
+    for (i = 0; i < steps.length; i++) {
+        steps[i].className = steps[i].className.replace('step active', 'step'); 
+    }
+    steps[indexTab].className = 'step active';
+}
