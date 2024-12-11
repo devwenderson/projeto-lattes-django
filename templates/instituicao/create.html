@@ -280,7 +280,11 @@
           <div class="col-md-6">
             <div class="mb-3 field">
               <label for="optante_simples" class="form-label">Optante pelo simples:</label>
-              <input type="text" class="form-control" id="optante_simples" name="optante_simples" placeholder="Informe ">
+              <select class="form-select" id="optante_simples" name="optante_simples" aria-label="Default select example">
+                <option selected>Selecione</option>
+                <option value="Sim">Sim</option>
+                <option value="Não">Não</option>
+              </select>
             </div>
 
             <div class="mb-3 field">
@@ -292,7 +296,11 @@
 
             <div class="mb-3 field">
               <label for="mei" class="form-label">Optante pelo MEI:</label>
-              <input type="number" class="form-control" id="mei" name="mei" placeholder="Informe o MEI">
+              <select class="form-select" id="mei" name="mei" aria-label="Default select example">
+                <option selected>Selecione</option>
+                <option value="Sim">Sim</option>
+                <option value="Não">Não</option>
+              </select>
             </div>
           </div>
         </div>
@@ -441,14 +449,14 @@
             <!-- Campo Telefone Principal -->
             <div class="mb-3">
               <label for="telefone1" class="form-label">Telefone Principal</label>
-              <input type="number" class="form-control" id="telefone1" name="telefone1"
+              <input type="text" class="form-control" id="telefone1" name="telefone1"
                 placeholder="Informe o telefone principal">
             </div>
 
             <!-- Campo Telefone Secundário -->
             <div class="mb-3">
               <label for="telefone2" class="form-label">Telefone Secundário</label>
-              <input type="number" class="form-control" id="telefone2" name="telefone2"
+              <input type="text" class="form-control" id="telefone2" name="telefone2"
                 placeholder="Informe o telefone secundário">
             </div>
 

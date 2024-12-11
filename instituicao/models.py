@@ -49,10 +49,10 @@ class Instituicao(models.Model):
     data_situacao_especial = models.DateField(blank=True, null=True)
     
     # Informações especiais
-    optante_simples = models.BooleanField()
+    optante_simples = models.CharField(max_length=3)
     data_inicio_simples = models.DateField(blank=True, null=True)
     data_fim_simples = models.DateField(blank=True, null=True)
-    optante_mei = models.BooleanField()
+    optante_mei = models.CharField(max_length=3)
     
     # Sócios e Representante Legal como campos textuais
     tipo_socio = models.CharField(verbose_name="Tipo de sócio", max_length=80, choices=TIPO_SOCIOS_CHOICES)
@@ -86,7 +86,7 @@ class Instituicao(models.Model):
     categoria_administrativa = models.CharField(max_length=100)
     porte = models.CharField(max_length=50)
     setor_atividade = models.CharField(max_length=100)
-    capital_social = models.DecimalField(max_digits=15, decimal_places=2)
+    capital_social = models.CharField(max_length=50)
     
     # Histórico
     data_fundacao = models.DateField()
