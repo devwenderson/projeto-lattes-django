@@ -31,7 +31,7 @@ class Instituicao(models.Model):
         ('Procurador', 'Procurador'),
     )
     # Identificação
-    cnpj = models.CharField(max_length=18, unique=True)
+    cnpj = models.CharField(max_length=18)
     nome = models.CharField(max_length=255)
     sigla = models.CharField(max_length=50, blank=True, null=True)
     tipo_estabelecimento = models.CharField(max_length=100, choices=TIPO_ESTABELECIMENTO_CHOICES)

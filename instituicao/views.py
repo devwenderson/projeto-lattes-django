@@ -1,11 +1,18 @@
 from django.shortcuts import render
 from instituicao.models import Instituicao
+from django.urls import reverse_lazy
 
 def index(request):
     return render(request, 'index.html')
 
 def cadi_index(request):
     return render(request, 'instituicao/cadi-index.html')
+
+def detalhar_instituicao(request, pk):
+    context = {}
+    context['instituicao'] = Instituicao.objects.get(pk=pk)
+    return render(request, 'instituicao/detail.html', context)
+
 
 def buscar_instituicao(request):
     context = {}
@@ -137,7 +144,5 @@ def cadastro_instituicao(request):
             missao=missao
         )
         instituicao.save()
-
-        
+        reverse_lazy('buscar-instituicao')
     return render(request, 'instituicao/create.html')
-    

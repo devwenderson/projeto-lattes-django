@@ -15,7 +15,7 @@
       <tbody>
         {% for inst in instituicoes %}
           <tr>
-            <td>{{ inst.nome }}</td>
+            <td><a href="{% url 'detalhar-instituicao' inst.pk %}">{{ inst.nome }}</a></td>
             <td>{{ inst.sigla }}</td>
             <td>{{ inst.cnpj }}</td>
             <td>{{ inst.nome_representante }}</td>
