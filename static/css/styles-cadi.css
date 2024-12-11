@@ -94,23 +94,23 @@ h1, h5{
     align-items: center;
 }
 
-.icon > .step {
+.icon .step {
     background-color: var(--clr-grey);
     padding: 15px;
     border-radius: 50%;
 }
 
-.icon > .step.active {
+.icon .step.active {
     background-color: var(--verde-limao);
 }
 
-.icon > .step:hover {
+.icon .step:hover {
     scale: 1.1;
     cursor: pointer;
     transition: .1s;
 }
 
-.avance{
+.avance {
     float: right;
     margin-left: 5px;
 }
@@ -173,10 +173,6 @@ h1, h5{
 /* Remover a margem dos passos */
 .tab {
     display: none;
-}
-
-.step.finish {
-    background-color: #04AA6D;
 }
 
 input.invalid {

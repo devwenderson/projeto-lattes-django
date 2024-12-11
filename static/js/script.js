@@ -55,15 +55,12 @@ function validadeForm() {
             valid = false
         }
     };
-
-    if (valid) {
-        document.getElementsByClassName('step')[currentTab].className += 'finish';
-    };
     return valid;
 }
 
 function changeStepIndicator (indexTab) {
     let steps = document.getElementsByClassName('step');
+    console.log(steps)
     for (i = 0; i < steps.length; i++) {
         steps[i].className = steps[i].className.replace('step active', 'step'); 
     }

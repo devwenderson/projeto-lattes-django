@@ -59,7 +59,7 @@ class Instituicao(models.Model):
     nome_socio = models.CharField(verbose_name='Nome do sócio', max_length=70)
     cpf_socio = models.CharField(verbose_name='CPF do sócio', max_length=14)
     qualificacao_socio = models.CharField(verbose_name='Qualificação do sócio', max_length=70, choices=SOCIO_QUALIFICACAO)
-    data_inclusao_socioedade = models.DateField(verbose_name='Data de Inclusão na Sociedade')
+    data_inclusao_sociedade = models.DateField(verbose_name='Data de Inclusão na Sociedade')
     
     nome_representante = models.CharField(verbose_name='Nome do representante legal', max_length=60)
     cpf_representante = models.CharField(verbose_name='CPF do representante legal', max_length=14)
@@ -67,19 +67,16 @@ class Instituicao(models.Model):
 
     # Endereço
     cep = models.CharField(max_length=10)
-    tipo_cep = models.CharField(max_length=50, blank=True, null=True)
     endereco = models.CharField(max_length=255)
     complemento = models.CharField(max_length=100, blank=True, null=True)
     bairro = models.CharField(max_length=100)
     uf = models.CharField(max_length=2)
     cidade = models.CharField(max_length=100)
+    numero_caixa_postal = models.CharField(max_length=20)
 
     # Contato
-    ddd = models.CharField(max_length=2)
     telefone1 = models.CharField(max_length=15, blank=True, null=True)
-    ramal1 = models.CharField(max_length=10, blank=True, null=True)
     telefone2 = models.CharField(max_length=15, blank=True, null=True)
-    ramal2 = models.CharField(max_length=10, blank=True, null=True)
     fax = models.CharField(max_length=15, blank=True, null=True)
     email = models.EmailField(blank=True, null=True)
     website = models.URLField(blank=True, null=True)

@@ -163,22 +163,22 @@
           <div class="col-md-6">
             <div class="mb-3">
               <label for="cnpj" class="form-label">CNPJ</label>
-              <input type="email" class="form-control" id="cnpj" placeholder="Informe ">
+              <input type="text" class="form-control" id="cnpj" name="cnpj" placeholder="Informe o CNPJ">
             </div>
 
             <div class="mb-3">
-              <label for="cnpj" class="form-label">Nome da instituição:</label>
-              <input type="email" class="form-control" id="cnpj" placeholder="Informe ">
+              <label for="nome" class="form-label">Nome da instituição:</label>
+              <input type="text" class="form-control" id="nome" name="nome" placeholder="Informe o nome" value="a">
             </div>
 
             <div class="mb-3">
-              <label for="cnpj" class="form-label">Sigla da instituição:</label>
-              <input type="email" class="form-control" id="cnpj" placeholder="Informe ">
+              <label for="sigla" class="form-label">Sigla da instituição:</label>
+              <input type="text" class="form-control" id="sigla" name="sigla" placeholder="Informe sigla" value="a">
             </div>
 
             <div class="mb-3">
-              <label for="cnpj" class="form-label">Tipo de estabelecimento:</label>
-              <select class="form-select" aria-label="Default select example">
+              <label for="tipo_estabelecimento" class="form-label">Tipo de estabelecimento:</label>
+              <select class="form-select" id="tipo_estabelecimento" name="tipo_estabelecimento" aria-label="Default select example">
                 <option selected>Selecione</option>
                 <option value="1">Tipo 1</option>
                 <option value="2">Tipo 2</option>
@@ -187,8 +187,8 @@
             </div>
 
             <div class="mb-3">
-              <label for="cnpj" class="form-label">Razão social:</label>
-              <input type="text" class="form-control" id="cnpj">
+              <label for="razao_social" class="form-label">Razão social:</label>
+              <input type="text" class="form-control" id="razao_social" name="razao_social" value="a">
             </div>
           </div>
 
@@ -202,18 +202,13 @@
 
           <div class="col-md-6">
             <div class="mb-3 field">
-              <label for="cnpj" class="form-label">Tipo de estabelecimento:</label>
-              <select class="form-select" aria-label="Default select example">
-                <option selected>Selecione</option>
-                <option value="1">Tipo 1</option>
-                <option value="2">Tipo 2</option>
-                <option value="3">Tipo 3</option>
-              </select>
+              <label for="pais" class="form-label">País:</label>
+              <input type="text" class="form-control" id="pais" name="pais" value="a">
             </div>
 
             <div class="mb-3 field">
-              <label for="cnpj" class="form-label">Razão social:</label>
-              <input type="text" class="form-control" id="cnpj">
+              <label for="idioma" class="form-label">Idioma:</label>
+              <input type="text" class="form-control" id="idioma" name="idioma" value="a"> 
             </div>
           </div>
         </div>
@@ -231,8 +226,8 @@
 
           <div class="col-md-6">
             <div class="mb-3 field">
-              <label for="cnpj" class="form-label">Informe a situação:</label>
-              <select class="form-select" aria-label="Default select example">
+              <label for="situacao_cadastral" class="form-label">Informe a situação:</label>
+              <select class="form-select" id="situacao_cadastral" name="situacao_cadastral" aria-label="Default select example">
                 <option selected>Selecione</option>
                 <option value="1">Tipo 1</option>
                 <option value="2">Tipo 2</option>
@@ -241,13 +236,13 @@
             </div>
 
             <div class="mb-3 field">
-              <label for="date" class="form-label">Data da situação cadastral:</label>
-              <input type="date" class="form-control" id="date" placeholder="Informe ">
+              <label for="data_situacao_cadastral" class="form-label">Data da situação cadastral:</label>
+              <input type="date" class="form-control" id="data_situacao_cadastral" name="data_situacao_cadastral" placeholder="Informe a data da situação cadastral">
             </div>
 
             <div class="mb-3 field">
               <label for="motivo" class="form-label">Motivo:</label>
-              <textarea class="form-control" id="motivo" rows="3"
+              <textarea class="form-control" id="motivo" name="motivo" rows="3"
                 placeholder="Informe o motivo de forma clara... "></textarea>
             </div>
           </div>
@@ -261,8 +256,8 @@
 
           <div class="col-md-6">
             <div class="mb-3 field">
-              <label for="cnpj" class="form-label">Informe a situação:</label>
-              <select class="form-select" aria-label="Default select example">
+              <label for="situacao_especial" class="form-label">Informe a situação:</label>
+              <select class="form-select" id="situacao_especial" name="situacao_especial" aria-label="Default select example">
                 <option selected>Selecione</option>
                 <option value="1">Tipo 1</option>
                 <option value="2">Tipo 2</option>
@@ -271,8 +266,8 @@
             </div>
 
             <div class="mb-3 field">
-              <label for="date" class="form-label">Data da situação cadastral:</label>
-              <input type="date" class="form-control" id="date" placeholder="Informe ">
+              <label for="data_situacao_especial" class="form-label">Data da situação cadastral:</label>
+              <input type="date" class="form-control" id="data_situacao_especial" name="data_situacao_especial" placeholder="Informe a data da situação especial">
             </div>
           </div>
           <hr>
@@ -284,20 +279,20 @@
           </div>
           <div class="col-md-6">
             <div class="mb-3 field">
-              <label for="texto" class="form-label">Optante pelo simples:</label>
-              <input type="text" class="form-control" id="date" placeholder="Informe ">
+              <label for="optante_simples" class="form-label">Optante pelo simples:</label>
+              <input type="text" class="form-control" id="optante_simples" name="optante_simples" placeholder="Informe ">
             </div>
 
             <div class="mb-3 field">
-              <label for="date" class="form-label">Data de início:</label>
-              <input type="date" class="form-control" id="date" placeholder="Informe ">
-              <label for="date" class="form-label">Data de fim:</label>
-              <input type="date" class="form-control" id="date" placeholder="Informe ">
+              <label for="data_inicio_simples" class="form-label">Data de início:</label>
+              <input type="date" class="form-control" id="data_inicio_simples" name="data_inicio_simples">
+              <label for="data_fim_simples" class="form-label">Data de fim:</label>
+              <input type="date" class="form-control" id="data_fim_simples" name="data_fim_simples">
             </div>
 
             <div class="mb-3 field">
               <label for="mei" class="form-label">Optante pelo MEI:</label>
-              <input type="number" class="form-control" id="mei" placeholder="Informe ">
+              <input type="number" class="form-control" id="mei" name="mei" placeholder="Informe o MEI">
             </div>
           </div>
         </div>
@@ -315,8 +310,8 @@
           </div>
           <div class="col-md-6">
             <div class="mb-3">
-              <label for="tipo-socio" class="form-label">Tipo de Sócio:</label>
-              <select class="form-select" id="tipo-socio" name="tipo-socio">
+              <label for="tipo_socio" class="form-label">Tipo de Sócio:</label>
+              <select class="form-select" id="tipo_socio" name="tipo_socio">
                 <option selected>Selecione</option>
                 <option value="1">Tipo 1</option>
                 <option value="2">Tipo 2</option>
@@ -324,16 +319,16 @@
               </select>
             </div>
             <div class="mb-3">
-              <label for="cpf-socio" class="form-label">CPF:</label>
-              <input type="text" class="form-control" id="cpf-socio" name="cpf-socio" placeholder="Informe o CPF">
+              <label for="cpf_socio" class="form-label">CPF:</label>
+              <input type="text" class="form-control" id="cpf_socio" name="cpf_socio" placeholder="Informe o CPF">
             </div>
             <div class="mb-3">
-              <label for="nome-socio" class="form-label">Nome:</label>
-              <input type="text" class="form-control" id="nome-socio" name="nome-socio" placeholder="Informe o nome">
+              <label for="nome_socio" class="form-label">Nome:</label>
+              <input type="text" class="form-control" id="nome_socio" name="nome_socio" placeholder="Informe o nome">
             </div>
             <div class="mb-3">
-              <label for="qualificacao-socio" class="form-label">Qualificação:</label>
-              <select class="form-select" id="qualificacao-socio" name="qualificacao-socio">
+              <label for="qualificacao_socio" class="form-label">Qualificação:</label>
+              <select class="form-select" id="qualificacao_socio" name="qualificacao_socio">
                 <option selected>Selecione</option>
                 <option value="1">Qualificação 1</option>
                 <option value="2">Qualificação 2</option>
@@ -341,8 +336,8 @@
               </select>
             </div>
             <div class="mb-3">
-              <label for="data-inclusao" class="form-label">Data de Inclusão na Sociedade:</label>
-              <input type="date" class="form-control" id="data-inclusao" name="data-inclusao">
+              <label for="data_inclusao_sociedade" class="form-label">Data de Inclusão na Sociedade:</label>
+              <input type="date" class="form-control" id="data_inclusao_sociedade" name="data_inclusao_sociedade">
             </div>
           </div>
         </div>
@@ -356,19 +351,19 @@
 
           <div class="col-md-6">
             <div class="mb-3">
-              <label for="cpf-representante" class="form-label">CPF:</label>
-              <input type="text" class="form-control" id="cpf-representante" name="cpf-representante"
+              <label for="cpf_representante" class="form-label">CPF:</label>
+              <input type="text" class="form-control" id="cpf_representante" name="cpf_representante"
                 placeholder="Informe o CPF">
             </div>
             <div class="mb-3">
-              <label for="nome-representante" class="form-label">Nome:</label>
-              <input type="text" class="form-control" id="nome-representante" name="nome-representante"
+              <label for="nome_representante" class="form-label">Nome:</label>
+              <input type="text" class="form-control" id="nome_representante" name="nome_representante"
                 placeholder="Informe o nome">
             </div>
 
             <div class="mb-3">
-              <label for="qualificacao-representante" class="form-label">Qualificação:</label>
-              <select class="form-select" id="qualificacao-representante" name="qualificacao-representante">
+              <label for="qualificacao_representante" class="form-label">Qualificação:</label>
+              <select class="form-select" id="qualificacao_representante" name="qualificacao_representante">
                 <option selected>Selecione</option>
                 <option value="1">Qualificação 1</option>
                 <option value="2">Qualificação 2</option>
@@ -399,15 +394,15 @@
 
             <!-- Campo Código Postal -->
             <div class="mb-3">
-              <label for="codigo-postal" class="form-label">Código Postal</label>
-              <input type="text" class="form-control" id="codigo-postal" name="codigo-postal"
+              <label for="cep" class="form-label">Código Postal</label>
+              <input type="text" class="form-control" id="cep" name="cep"
                 placeholder="Insira o CEP">
             </div>
 
             <!-- Selecção de Estado/Província -->
             <div class="mb-3">
-              <label for="estado" class="form-label">Estado/Província</label>
-              <select class="form-select" id="estado" name="estado">
+              <label for="uf" class="form-label">Estado/Província</label>
+              <select class="form-select" id="uf" name="uf">
                 <option selected>Selecione</option>
                 <option value="1">São Paulo</option>
                 <option value="2">Rio de Janeiro</option>
@@ -423,8 +418,8 @@
 
             <!-- Campo Caixa Postal -->
             <div class="mb-3">
-              <label for="caixa-postal" class="form-label">Caixa Postal</label>
-              <input type="number" class="form-control" id="caixa-postal" name="caixa-postal"
+              <label for="numero_caixa_postal" class="form-label">Caixa Postal</label>
+              <input type="text" class="form-control" id="numero_caixa_postal" name="numero_caixa_postal"
                 placeholder="Número da Caixa Postal">
             </div>
           </div>
@@ -445,15 +440,15 @@
           <div class="col-md-6">
             <!-- Campo Telefone Principal -->
             <div class="mb-3">
-              <label for="telefone-principal" class="form-label">Telefone Principal</label>
-              <input type="number" class="form-control" id="telefone-principal" name="telefone-principal"
+              <label for="telefone1" class="form-label">Telefone Principal</label>
+              <input type="number" class="form-control" id="telefone1" name="telefone1"
                 placeholder="Informe o telefone principal">
             </div>
 
             <!-- Campo Telefone Secundário -->
             <div class="mb-3">
-              <label for="telefone-secundario" class="form-label">Telefone Secundário</label>
-              <input type="number" class="form-control" id="telefone-secundario" name="telefone-secundario"
+              <label for="telefone2" class="form-label">Telefone Secundário</label>
+              <input type="number" class="form-control" id="telefone2" name="telefone2"
                 placeholder="Informe o telefone secundário">
             </div>
 
@@ -465,8 +460,8 @@
 
             <!-- Campo Email Institucional -->
             <div class="mb-3">
-              <label for="email-institucional" class="form-label">Email Institucional</label>
-              <input type="email" class="form-control" id="email-institucional" name="email-institucional"
+              <label for="email" class="form-label">Email Institucional</label>
+              <input type="email" class="form-control" id="email" name="email"
                 placeholder="Informe o email institucional">
             </div>
 
@@ -493,8 +488,8 @@
 
           <div class="col-md-6">
             <div class="mb-3">
-              <label for="natureza-juridica" class="form-label">Natureza jurídica:</label>
-              <select class="form-select" id="natureza-juridica" name="natureza-juridica">
+              <label for="natureza_juridica" class="form-label">Natureza jurídica:</label>
+              <select class="form-select" id="natureza_juridica" name="natureza_juridica">
                 <option selected>Selecione</option>
                 <option value="1">Opção 1</option>
                 <option value="2">Opção 2</option>
@@ -502,8 +497,8 @@
             </div>
 
             <div class="mb-3">
-              <label for="categoria-administrativa" class="form-label ">Categoria administrativa:</label>
-              <select class="form-select" id="categoria-administrativa" name="categoria-administrativa">
+              <label for="categoria_administrativa" class="form-label ">Categoria administrativa:</label>
+              <select class="form-select" id="categoria_administrativa" name="categoria_administrativa">
                 <option selected>Selecione</option>
                 <option value="1">Opção 1</option>
                 <option value="2">Opção 2</option>
@@ -511,8 +506,8 @@
             </div>
 
             <div class="mb-3">
-              <label for="porte-instituicao" class="form-label ">Porte da instituição:</label>
-              <select class="form-select" id="porte-instituicao" name="porte-instituicao">
+              <label for="porte" class="form-label ">Porte da instituição:</label>
+              <select class="form-select" id="porte" name="porte">
                 <option selected>Selecione</option>
                 <option value="1">Pequeno</option>
                 <option value="2">Médio</option>
@@ -532,14 +527,14 @@
 
           <div class="col-md-6">
             <div class="mb-3">
-              <label for="setor-atividade" class="form-label ">Setor de atividade econômica:</label>
-              <input type="text" class="form-control" id="setor-atividade" name="setor-atividade"
+              <label for="setor_atividade" class="form-label ">Setor de atividade econômica:</label>
+              <input type="text" class="form-control" id="setor_atividade" name="setor_atividade"
                 placeholder="Incluir Setor de Atividade Econômica">
             </div>
 
             <div class="mb-3">
-              <label for="capital-social" class="form-label">Capital Social:</label>
-              <input type="text" class="form-control" id="capital-social" name="capital-social"
+              <label for="capital_social" class="form-label">Capital Social:</label>
+              <input type="text" class="form-control" id="capital_social" name="capital_social"
                 placeholder="Insira o Capital Social">
             </div>
           </div>
@@ -560,8 +555,8 @@
           <div class="col-md-6">
             <!-- Data da Fundação -->
             <div class="mb-3">
-              <label for="data-fundacao" class="form-label">Data da Fundação:</label>
-              <input type="date" class="form-control" id="data-fundacao" name="data-fundacao">
+              <label for="data_fundacao" class="form-label">Data da Fundação:</label>
+              <input type="date" class="form-control" id="data_fundacao" name="data_fundacao">
             </div>
 
             <!-- Histórico (Textarea) -->
