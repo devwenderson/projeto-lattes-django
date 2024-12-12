@@ -148,5 +148,4 @@ def cadastro_instituicao(request):
         
         instituicao.save()
         return redirect(reverse_lazy('cadi-index'))
-    else:
-        return render(request, 'instituicao/create.html')
+    return render(request, 'instituicao/create.html')
